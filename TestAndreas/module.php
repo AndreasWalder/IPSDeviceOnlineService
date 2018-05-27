@@ -89,7 +89,6 @@ class TestAndreas extends IPSModule
     }
 
          public function UpdateData() {
-			 $this->ReadPropertyString('DebugDeviceName');
 			 echo 'Mac-Adresse für ( ' . $DebugDeviceName . ' )';
 		 }
 		
