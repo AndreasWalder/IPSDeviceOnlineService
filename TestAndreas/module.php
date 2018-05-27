@@ -73,25 +73,27 @@ class TestAndreas extends IPSModule
 		
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-        if ($device1 != '' && $user1 != '') {
-            $ok1 = true;
-            if ($device1 == '') {
-                echo 'no value for property "device1"';
-                $ok1 = false;
-            }
-            if ($user1 == '') {
-                echo 'no value for property "user1"';
-                $ok1 = false;
-            }
-            $this->SetStatus($ok ? 102 : 201);
-        } else {
-            $this->SetStatus(104);
-        }
     }
 
          public function UpdateData() {
 			 echo 'Hallo';
-			 ApplyChanges();
+			 
+			 
+			 if ($device1 != '' && $user1 != '') {
+               $ok1 = true;
+               if ($device1 == '') {
+                 echo 'no value for property "device1"';
+                 $ok1 = false;
+                 }
+               if ($user1 == '') {
+                echo 'no value for property "user1"';
+                $ok1 = false;
+               }
+               $this->SetStatus($ok ? 102 : 201);
+             } 
+		     else {
+             $this->SetStatus(104);
+             }
 		 }
 		 
 		 public function Debug() {
