@@ -24,7 +24,7 @@
 	"actions":
 			[
 			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an" },
-				{ "type": "Button", "label": "Debug", "onClick": "DeviceDebug($id);" },
+				{ "type": "Button", "label": "Debug", "onClick": "DebugDevice($id);" },
 				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" }
 			],		
 	"status":
