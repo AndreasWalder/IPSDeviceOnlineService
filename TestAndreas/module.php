@@ -44,7 +44,7 @@ class TestAndreas extends IPSModule
 		$this->RegisterPropertyInteger("UpdateInterval", 60);
 		
 		//Timer erstellen
-		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'UpdateData($_IPS[\'TARGET\']);');
+		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'TestAndreas_UpdateData($_IPS[\'TARGET\']);');
     }
 
     public function ApplyChanges()
