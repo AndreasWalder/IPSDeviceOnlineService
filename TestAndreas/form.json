@@ -20,11 +20,6 @@
 				{ "type": "ValidationTextBox", "name": "user4", "caption": "User4" },
 				{ "type": "ValidationTextBox", "name": "macaddress4", "caption": "Mac Address4" },
 				{ "type": "CheckBox", "name": "active4", "caption": "Active4" }
-			],
-	"actions":
-			[
-				{ "type": "Button", "label": "Debug", "onClick": "DebugDevice($id);" }
-				{ "type": "ValidationTextBox", "name": "DebugDevice", "caption": "Debug Device Name" }
 			],		
 	"status":
 			[
