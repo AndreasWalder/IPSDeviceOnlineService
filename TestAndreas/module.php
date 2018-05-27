@@ -91,6 +91,7 @@ class TestAndreas extends IPSModule
 
          public function UpdateData() {
 			 echo 'Hallo';
+			 ApplyChanges();
 		 }
 		 
 		 public function Debug() {
