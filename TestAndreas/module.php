@@ -83,10 +83,11 @@ class TestAndreas extends IPSModule
                 echo 'no value for property "user1"';
                 $ok1 = false;
                }
-               $this->SetStatus($ok ? 102);
+	    if ($ok1 == true){
+          $this->SetStatus(102);
         } 
 		else {
-             $this->SetStatus(104);
+          $this->SetStatus(104);
         }
     }
 
