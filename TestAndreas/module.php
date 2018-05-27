@@ -63,7 +63,6 @@ class TestAndreas extends IPSModule
         $macaddress1 = $this->ReadPropertyString('macaddress4');
         $active1 = $this->ReadPropertyBoolean('active4');
 		
-		IPS_SetEventScript($eid, "SetValue(IPS_GetObjectIDByIdent(\"DebugDeviceName\", \$_IPS['TARGET']), Debug(\$_IPS['TARGET'], \$_IPS['VALUE']));");
 		$DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
 
         if ($device1 != '' && $user1 != '') {
