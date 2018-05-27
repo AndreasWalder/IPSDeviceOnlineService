@@ -87,7 +87,7 @@ class TestAndreas extends IPSModule
     }
 
          public function UpdateData() {
-			 echo 'Mac-Adresse für';
+			 
 		 }
 		
 }
