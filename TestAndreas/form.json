@@ -23,7 +23,8 @@
 			],
 	"actions":
 			[
-				{ "type": "Button", "label": "Debug", "onClick": "DebugDevice($id);" }
+				{ "type": "Button", "label": "Debug", "onClick": "DebugDevice($id);" },
+				{ "type": "ValidationTextBox", "name": "DebugDevice", "caption": "Debug Device Name" }
 			],		
 	"status":
 			[
