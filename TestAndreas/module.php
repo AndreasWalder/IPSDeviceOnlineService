@@ -69,6 +69,8 @@ class TestAndreas extends IPSModule
         $active1 = $this->ReadPropertyBoolean('active4');
 		
 		$DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
+		
+		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
         if ($device1 != '' && $user1 != '') {
             $ok1 = true;
@@ -87,7 +89,8 @@ class TestAndreas extends IPSModule
     }
 
          public function UpdateData() {
-			 
+			 $this->ReadPropertyString('DebugDeviceName')
+			 echo 'Mac-Adresse für ( ' . $DebugDeviceName . ' )';
 		 }
 		
 }
