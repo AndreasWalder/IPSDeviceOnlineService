@@ -1,5 +1,22 @@
 <?php
 
+// Constants will be defined with IP-Symcon 5.0 and newer
+if (!defined('KR_READY')) {
+    define('KR_READY', 10103);
+}
+if (!defined('IPS_BOOLEAN')) {
+    define('IPS_BOOLEAN', 0);
+}
+if (!defined('IPS_INTEGER')) {
+    define('IPS_INTEGER', 1);
+}
+if (!defined('IPS_FLOAT')) {
+    define('IPS_FLOAT', 2);
+}
+if (!defined('IPS_STRING')) {
+    define('IPS_STRING', 3);
+}
+
 class TestAndreas extends IPSModule
 {
     public function Create()
@@ -23,7 +40,7 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyString('macaddress4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
 		
-		$this->RegisterTimer('DebugDevice', 0, 'DebugDevice(' . $this->InstanceID . ');');
+		$this->RegisterTimer('UpdateData', 0, 'Device_UpdateData(' . $this->InstanceID . ');');
 		$this->RegisterPropertyString('DebugDeviceName', '');
     }
 
@@ -65,6 +82,16 @@ class TestAndreas extends IPSModule
             $this->SetStatus(104);
         }
     }
+	
+	public function UpdateData()
+    {
+        $this->reallyUpdateData(false);
+    }
+	
+	private function reallyUpdateData($status_only)
+    {
+	    echo 'DebugDevice true';
+	}
 
     public function DebugDevice()
     {
