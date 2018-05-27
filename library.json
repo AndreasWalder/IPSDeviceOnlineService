@@ -1,0 +1,12 @@
+{
+	"id": "{C0E06BF4-D9D9-42018-8CAB-93D161A7CA98}",
+	"author": "Andreas Walder",
+	"name": "TestIps",
+	"url": "https://github.com/AndreasWalder/TestIps",
+	"compatibility": {
+		"version": "4.4"
+	},
+	"version": "1.0",
+	"build": 0,
+	"date": 1521901144
+}
