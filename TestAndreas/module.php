@@ -81,7 +81,7 @@ class TestAndreas extends IPSModule
         }
     }
 	
-	public function Device_UpdateData()
+	public function Debug()
     {
         echo 'DebugDevice true';
     }
