@@ -19,14 +19,16 @@
 				{ "type": "ValidationTextBox", "name": "device4", "caption": "Device4" },
 				{ "type": "ValidationTextBox", "name": "user4", "caption": "User4" },
 				{ "type": "ValidationTextBox", "name": "macaddress4", "caption": "Mac Address4" },
-				{ "type": "CheckBox", "name": "active4", "caption": "Active4" }
+				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
+				
+				{ "type": "IntervalBox", "name": "UpdateInterval", "caption": "Minutes" }
 			],
 	"actions":
 			[
 			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an" },			
 				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" },
 				{ "type": "Button", "label": "Debug", "onClick": "echo 'Mac-Adresse für ( ' .$DebugDeviceName . ' )';" },
-				{ "type": "Button", "label": "Update", "onClick": "$this->IPS_ApplyChanges();" }
+				{ "type": "Button", "label": "Update", "onClick": "UpdateData($id);" }
 			],		
 	"status":
 			[

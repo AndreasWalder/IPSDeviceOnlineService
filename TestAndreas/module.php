@@ -40,6 +40,11 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyString('macaddress4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
 		$this->RegisterPropertyString('DebugDeviceName', '');
+		
+		$this->RegisterPropertyInteger("UpdateInterval", 60);
+		
+		//Timer erstellen
+		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'UpdateData($_IPS[\'TARGET\']);');
     }
 
     public function ApplyChanges()
@@ -79,5 +84,10 @@ class TestAndreas extends IPSModule
         } else {
             $this->SetStatus(104);
         }
-    }	
+    }
+
+         public function UpdateData() {
+			 echo 'Mac-Adresse für ( ' .$DebugDeviceName . ' )';
+		 }
+		
 }
