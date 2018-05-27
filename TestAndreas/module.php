@@ -86,4 +86,8 @@ class TestAndreas extends IPSModule
         echo 'DebugDevice true';
     }
 	
+	public function RequestAction($Ident, $DebugDeviceName) {
+            echo 'DebugDeviceName: '. $DebugDeviceName;
+        }
+	
 }
