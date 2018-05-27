@@ -22,11 +22,13 @@
 				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
 				
 				{ "type": "IntervalBox", "name": "UpdateInterval", "caption": "Minutes" }
+				
+				{ "type": "Label", "label": "Ip Adresse für Debug:" }	
+				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" }
 			],
 	"actions":
 			[
-			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an" },			
-				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" },
+			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an" },		
 				{ "type": "Button", "label": "Debug", "onClick": "echo 'Mac-Adresse für ( ' .$DebugDeviceName . ' )';" },
 				{ "type": "Button", "label": "Update", "onClick": "TA_UpdateData($id);" }
 			],		
