@@ -23,6 +23,7 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyString('macaddress4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
 		
+		$this->RegisterTimer('DebugDevice', 0, 'DeviceDebugDevice(' . $this->InstanceID . ');');
 		$this->RegisterPropertyString('DebugDevice', '');
     }
 
@@ -47,7 +48,6 @@ class TestAndreas extends IPSModule
         $macaddress1 = $this->ReadPropertyString('macaddress4');
         $active1 = $this->ReadPropertyBoolean('active4');
 		
-		$this->RegisterTimer('DebugDevice', 0, 'DeviceDebugDevice(' . $this->InstanceID . ');');
 		$DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
 
         if ($device1 != '' && $user1 != '') {
