@@ -85,8 +85,7 @@ class TestAndreas extends IPSModule
                }
 	    if ($ok1 == true){
           $this->SetStatus(102);
-        } 
-		else {
+        if ($ok1 == false){
           $this->SetStatus(104);
         }
     }
