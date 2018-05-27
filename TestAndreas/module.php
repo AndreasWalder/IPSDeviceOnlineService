@@ -47,7 +47,7 @@ class TestAndreas extends IPSModule
         $macaddress1 = $this->ReadPropertyString('macaddress4');
         $active1 = $this->ReadPropertyBoolean('active4');
 		
-		$DebugDevice = $this->ReadPropertyString('DebugDevice');
+		$DebugDeviceName = $this->ReadPropertyString('DebugDevice');
 
         if ($device1 != '' && $user1 != '') {
             $ok1 = true;
@@ -65,9 +65,9 @@ class TestAndreas extends IPSModule
         }
     }
 
-    public function DebugDevice()
+    public function DebugDevice($DebugDeviceName)
     {
-            echo 'DebugDevice true';
+            echo 'DebugDevice true' .$DebugDeviceName;
             $this->SetStatus(102);
     }
 }
