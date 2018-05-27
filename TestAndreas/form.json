@@ -1,26 +1,12 @@
 {
 	"elements":
 			[
-				{ "type": "ValidationTextBox", "name": "device1", "caption": "Device1" },
-				{ "type": "ValidationTextBox", "name": "user1", "caption": "User1" },
-				{ "type": "ValidationTextBox", "name": "macaddress1", "caption": "Mac Address1" },
-				{ "type": "CheckBox", "name": "active1", "caption": "Active1" },
-				{ "type": "ValidationTextBox", "name": "device2", "caption": "Device2" },
-				{ "type": "ValidationTextBox", "name": "user2", "caption": "User2" },
-				{ "type": "ValidationTextBox", "name": "macaddress2", "caption": "Mac Address2" },
-				{ "type": "CheckBox", "name": "active2", "caption": "Active2" },
-				{ "type": "ValidationTextBox", "name": "device3", "caption": "Device3" },
-				{ "type": "ValidationTextBox", "name": "user3", "caption": "User3" },
-				{ "type": "ValidationTextBox", "name": "macaddress3", "caption": "Mac Address3" },
-				{ "type": "CheckBox", "name": "active3", "caption": "Active3" },
-				{ "type": "ValidationTextBox", "name": "device4", "caption": "Device4" },
-				{ "type": "ValidationTextBox", "name": "user4", "caption": "User4" },
-				{ "type": "ValidationTextBox", "name": "macaddress4", "caption": "Mac Address4" },
-				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
+			
 			],
 	"actions":
 			[
-				
+				{ "type": "Button", "label": "Debug", "onClick": "DebugDevice($id);" }
+				{ "type": "ValidationTextBox", "name": "DebugDevice", "caption": "Debug Device Name" },
 			],		
 	"status":
 			[
