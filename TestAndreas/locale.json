@@ -1,20 +1,15 @@
 {
 	"translations": {
 		"de": {
-			"Server": "Server",
-			"Port": "Port",
-
-			"default settings": "Voreinstellungen", 
-			"severity": "Schwere",
-			"possible values for severity: emerg, alert, crit, err, warning, notice, info, debug":
-				"mögliche Werte für die Schwere (severity): emerg, alert, crit, err, warning, notice, info, debug",
-			"facility": "Kategorie",
-			"possible values for facility: auth, local0, local1, local2, local3, local4, local5, local6, local7, user":
-				"mögliche Werte für die Kategorie (facility): auth, local0, local1, local2, local3, local4, local5, local6, local7, user",
-			"program": "Programm",
-
-			"Testmessage": "Testnachricht",
-
+			"Device1": "Gerät1",
+			"Active1": "Aktiv1",
+			"Device2": "Gerät2",
+			"Active2": "Aktiv2",
+			"Device3": "Gerät3",
+			"Active3": "Aktiv3",
+			"Device4": "Gerät4",
+			"Active4": "Aktiv4",
+			"Debug Device Name": "Debug Gerät Name",
 			"Instance getting created": "Instanz wird erstellt",
 			"Instance is active": "Instanz ist aktiv",
 			"Instance is inactive": "Instanz ist inaktiv",
