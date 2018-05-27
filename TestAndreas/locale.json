@@ -1,7 +1,20 @@
 {
 	"translations": {
 		"de": {
-			
+		    "Device1": "Gerät1",
+			"Active1": "Aktiv1",
+			"Device2": "Gerät2",
+			"Active2": "Aktiv2",
+			"Device3": "Gerät3",
+			"Active3": "Aktiv3",
+			"Device4": "Gerät4",
+			"Active4": "Aktiv4",
+			"Debug Device Name": "Debug Gerät Name",
+			"Instance getting created": "Instanz wird erstellt",
+			"Instance is active": "Instanz ist aktiv",
+			"Instance is inactive": "Instanz ist inaktiv",
+
+			"Instance is inactive (invalid configuration)": "Instanz ist inaktiv (ungültige Konfiguration)"		
 		}
 	}
 }
