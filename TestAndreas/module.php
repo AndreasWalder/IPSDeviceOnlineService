@@ -69,6 +69,5 @@ class TestAndreas extends IPSModule
     public function DebugDevice()
     {
             echo 'DebugDevice true';
-            $this->SetStatus(102);
     }
 }
