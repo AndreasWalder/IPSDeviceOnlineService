@@ -40,8 +40,6 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyString('macaddress4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
 		$this->RegisterPropertyString('DebugDeviceName', '');
-		
-		$this->RegisterTimer('UpdateData', 0, 'Debug('. $this->InstanceID .');');
     }
 
     public function ApplyChanges()
@@ -81,15 +79,5 @@ class TestAndreas extends IPSModule
         } else {
             $this->SetStatus(104);
         }
-    }
-	
-	public function UpdateData()
-    {
-        echo 'DebugDevice true';
-    }
-	
-	public function RequestAction($Ident, $DebugDeviceName) {
-            echo 'DebugDeviceName: '. $DebugDeviceName;
-        }
-	
+    }	
 }
