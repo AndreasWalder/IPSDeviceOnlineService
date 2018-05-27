@@ -24,7 +24,7 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyBoolean('active4', 'false');
 		
 		$this->RegisterTimer('DebugDevice', 0, 'DeviceDebug(' . $this->InstanceID . ');');
-		$this->RegisterPropertyString('DebugDevice', '');
+		$this->RegisterPropertyString('DebugDeviceName', '');
     }
 
     public function ApplyChanges()
