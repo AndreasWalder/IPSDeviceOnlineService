@@ -21,9 +21,9 @@
 				{ "type": "ValidationTextBox", "name": "macaddress4", "caption": "Mac Address4" },
 				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
 				
-				{ "type": "IntervalBox", "name": "UpdateInterval", "caption": "Minutes" }
+				{ "type": "IntervalBox", "name": "UpdateInterval", "caption": "Minutes" },
 				
-				{ "type": "Label", "label": "Ip Adresse für Debug:" }	
+				{ "type": "Label", "label": "Ip Adresse für Debug:" },	
 				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" }
 			],
 	"actions":
