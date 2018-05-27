@@ -28,7 +28,7 @@
 			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an" },			
 				{ "type": "ValidationTextBox", "name": "DebugDeviceName", "caption": "Debug Device Name" },
 				{ "type": "Button", "label": "Debug", "onClick": "echo 'Mac-Adresse für ( ' .$DebugDeviceName . ' )';" },
-				{ "type": "Button", "label": "Update", "onClick": "TestAndreas_UpdateData($id);" }
+				{ "type": "Button", "label": "Update", "onClick": "TA_UpdateData($id);" }
 			],		
 	"status":
 			[
