@@ -45,6 +45,7 @@ class TestAndreas extends IPSModule
 		
 		//Timer erstellen
 		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'TA_UpdateData($_IPS[\'TARGET\']);');
+		$this->RegisterTimer("Debug", 0, 'TA_Debug($_IPS[\'TARGET\']);');
     }
 
     public function ApplyChanges()
@@ -89,6 +90,10 @@ class TestAndreas extends IPSModule
     }
 
          public function UpdateData() {
+			 echo 'Hallo';
+		 }
+		 
+		 public function Debug() {
 			 $DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
 			 echo 'Mac-Adresse für ( ' . $DebugDeviceName . ' )';
 		 }
