@@ -78,17 +78,12 @@ class TestAndreas extends IPSModule
                if ($device1 != '') {
                  echo 'no value for property "device1"';
                  $ok1 = false;
-                 }
+               }
                if ($user1 != '') {
                 echo 'no value for property "user1"';
                 $ok1 = false;
                }
-	    if ($ok1 == true){
-          $this->SetStatus(102);
-        if ($ok1 == false){
-          $this->SetStatus(104);
         }
-    }
 
          public function UpdateData() {
 			 echo 'Hallo';
