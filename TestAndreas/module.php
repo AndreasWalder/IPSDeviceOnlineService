@@ -92,43 +92,7 @@ class TestAndreas extends IPSModule
 
          public function UpdateData() {
 			 echo 'Hallo'
-			 
-	    $device1 = $this->ReadPropertyString('device1');
-        $user1 = $this->ReadPropertyString('user1');
-        $macaddress1 = $this->ReadPropertyString('macaddress1');
-        $active1 = $this->ReadPropertyBoolean('active1');
-		$device2 = $this->ReadPropertyString('device2');
-        $user2 = $this->ReadPropertyString('user2');
-        $macaddress2 = $this->ReadPropertyString('macaddress2');
-        $active2 = $this->ReadPropertyBoolean('active2');
-		$device3 = $this->ReadPropertyString('device3');
-        $user3 = $this->ReadPropertyString('user3');
-        $macaddress3 = $this->ReadPropertyString('macaddress3');
-        $active3 = $this->ReadPropertyBoolean('active3');
-		$device4 = $this->ReadPropertyString('device4');
-        $user4 = $this->ReadPropertyString('user4');
-        $macaddress4 = $this->ReadPropertyString('macaddress4');
-        $active4 = $this->ReadPropertyBoolean('active4');
-
-		if ($device1 != '' && $user1 != '') {
-               $ok1 = true;
-               if ($device1 != '') {
-                 echo 'no value for property "device1"';
-                 $ok1 = false;
-                 }
-               if ($user1 != '') {
-                echo 'no value for property "user1"';
-                $ok1 = false;
-               }
-               $this->SetStatus($ok ? 102 : 201);
-        } 
-		else {
-             $this->SetStatus(104);
-        }
-			 
-			 
-		 
-    }
+		}
 		 
 		 public function Debug() {
 			 $DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
