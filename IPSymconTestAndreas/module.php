@@ -1,6 +1,6 @@
 <?php
 
-class MySQL extends IPSModule
+class TestAndreas extends IPSModule
 {
     public function Create()
     {
