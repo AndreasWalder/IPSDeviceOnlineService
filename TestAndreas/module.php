@@ -143,6 +143,7 @@ class TestAndreas extends IPSModule
             }
             else 
             { 
+		        $user1 = 'Andreas';
 		        $VarID = @IPS_GetVariableIDByName($user1, $ParentID);
                 SetValueInteger($VarID, 0);
             } 
