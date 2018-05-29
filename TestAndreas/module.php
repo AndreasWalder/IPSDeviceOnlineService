@@ -96,13 +96,13 @@ class TestAndreas extends IPSModule
              { 
                 $host = gethostbyaddr($DebugDeviceAddress); 
                 $output = shell_exec('arp -a '.$DebugDeviceAddress);
-                if {echo 'IP: $adr -- Hostname: $host \n';} 
+                if {echo "IP: $DebugDeviceAddress -- Hostname: $host \n";} 
                 if {echo '$output';}
                 }
              }
              else 
              { 
-               if {echo "IP: $adr --> nicht erreichbar \n";} 
+               if {echo "IP: $DebugDeviceAddress --> nicht erreichbar \n";} 
              } 
 		 }
 		 
