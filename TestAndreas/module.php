@@ -50,7 +50,7 @@ class TestAndreas extends IPSModule
 		$associations = [];
         $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
         $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
-        $this->CreateVarProfile('TA.Handy', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
+        $this->CreateVarProfile('TA.Handy', IPS_BOOLEAN, '', 0, 0, 0, 1, 'Heart', $associations);
     }
 
     public function ApplyChanges()
