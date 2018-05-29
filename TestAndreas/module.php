@@ -89,9 +89,8 @@ class TestAndreas extends IPSModule
 		 
 		 public function Debug() {
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
-			 echo 'Mac-Adresse für ( ' . $DebugDeviceAddress . ' )';
 			 
-			 $ping = Sys_Ping("$DebugDeviceAddress",10); 
+			 $ping = Sys_Ping("$DebugDeviceAddress",1000); 
              if ($ping == true) 
              { 
                 $host = gethostbyaddr($DebugDeviceAddress); 
