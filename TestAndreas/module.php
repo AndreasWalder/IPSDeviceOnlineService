@@ -80,7 +80,7 @@ class TestAndreas extends IPSModule
 
 		if ($device1 != '' && $user1 != '') {
                $ok1 = true;
-			   $this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $this->ReadPropertyString('user1') == $user1);
+			   $this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $ok1);
                $this->SetStatus(102);
         } 
 		else {
@@ -131,6 +131,7 @@ class TestAndreas extends IPSModule
          public function UpdateData() {
 		   $device1 = $this->ReadPropertyString('device1');
 		   $macaddress1 = $this->ReadPropertyString('macaddress1');
+		   $user1 = $this->ReadPropertyString('user1');
 		   
 		   $ping = Sys_Ping("$device1",10); 
            if ($ping == true) 
@@ -138,12 +139,14 @@ class TestAndreas extends IPSModule
               $host = gethostbyaddr($adr); 
               $output = shell_exec("arp -a $device1");
               if(strpos($output,$macaddress1)!==false) {
-                 SetValueBoolean(19658 /*Andreas Zuhause (Haus\Übersicht\Test\TestNetzwerkSuche)*/, true);
+				 $VarID = @IPS_GetVariableID($user1);
+                 SetValueInteger($VarID, 1);
               }
             }
             else 
             { 
-                SetValueBoolean(19658 /*Andreas Zuhause (Haus\Übersicht\Test\TestNetzwerkSuche)*/, false);
+		        $VarID = @IPS_GetVariableID($user1);
+                SetValueInteger($VarID, 0);
             } 
 		}
 		 
