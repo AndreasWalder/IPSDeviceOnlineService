@@ -22,8 +22,6 @@ class TestAndreas extends IPSModule
     public function Create()
     {
         parent::Create();
-
-        $this->RegisterPropertyString('moduleStatus', '');
         $this->RegisterPropertyString('device1', '');
         $this->RegisterPropertyString('user1', '');
         $this->RegisterPropertyString('macaddress1', '');
@@ -57,8 +55,6 @@ class TestAndreas extends IPSModule
     public function ApplyChanges()
     {
         parent::ApplyChanges();
- 
-        $moduleStatus = $this->ReadPropertyString('moduleStatus');
         $device1 = $this->ReadPropertyString('device1');
         $user1 = $this->ReadPropertyString('user1');
         $macaddress1 = $this->ReadPropertyString('macaddress1');
@@ -82,12 +78,10 @@ class TestAndreas extends IPSModule
 
 		if ($device1 != '' && $user1 != '' && $macaddress1 != '') {
                $ok1 = true;			   
-               $this->SetStatus(102);
-			   $moduleStatus = 'Alles OK!';	
+               $this->SetStatus(102);		   
         } 
 		else {
-			 $ok1 = false;		
-             $moduleStatus = 'Kein Device1 Name eingetragen!';			 
+			 $ok1 = false;		 
              $this->SetStatus(104);
         }
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $ok1);
@@ -149,6 +143,7 @@ class TestAndreas extends IPSModule
             }
             else 
             { 
+		        echo "$user1";
 		        $VarID = @IPS_GetVariableID($user1);
                 SetValueInteger($VarID, 0);
             } 
