@@ -137,14 +137,14 @@ class TestAndreas extends IPSModule
               $host = gethostbyaddr($adr); 
               $output = shell_exec("arp -a $device1");
               if(strpos($output,$macaddress1)!==false) {
-				 $VarID = @IPS_GetVariableID($user1);
+				 $VarID = @IPS_GetVariableName($user1);
                  SetValueInteger($VarID, 1);
               }
             }
             else 
             { 
 		        echo "$user1";
-		        $VarID = @IPS_GetVariableID($user1);
+		        $VarID = @IPS_GetVariableName($user1);
                 SetValueInteger($VarID, 0);
             } 
 		}
