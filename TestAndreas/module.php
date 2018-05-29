@@ -50,7 +50,7 @@ class TestAndreas extends IPSModule
 		$associations = [];
         $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
         $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
-        $this->CreateVarProfile('User1', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
+        $this->CreateVarProfile('TA.Handy', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
     }
 
     public function ApplyChanges()
@@ -80,7 +80,7 @@ class TestAndreas extends IPSModule
 
 		if ($device1 != '' && $user1 != '') {
                $ok1 = true;
-			   
+			   $this->MaintainVariable('user1Active', $this->Translate($user1), IPS_INTEGER, 'TA.Handy', $vpos++, true);
                $this->SetStatus(102);
         } 
 		else {
