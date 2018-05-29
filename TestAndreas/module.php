@@ -95,6 +95,7 @@ class TestAndreas extends IPSModule
              { 
                 $host = gethostbyaddr($DebugDeviceAddress);
                 $output = shell_exec("arp -a $DebugDeviceAddress");
+				
                 echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				echo "Mac: $output \n";
              }
