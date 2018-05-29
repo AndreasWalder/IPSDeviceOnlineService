@@ -95,7 +95,7 @@ class TestAndreas extends IPSModule
              if ($ping == true) 
              { 
                 $host = gethostbyaddr($DebugDeviceAddress); 
-                $output = shell_exec('arp -a '.$DebugDeviceAddress''); //'arp '.$ip.'
+                $output = shell_exec('arp -a '.$DebugDeviceAddress);
                 if {echo "IP: $adr -- Hostname: $host \n";} 
                 if {echo "$output";}
                 }
