@@ -41,11 +41,16 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyBoolean('active4', 'false');
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
-		$this->RegisterPropertyInteger("UpdateInterval", 60);
+		$this->RegisterPropertyInteger("UpdateInterval", 30);
 		
 		//Timer erstellen
 		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'TA_UpdateData($_IPS[\'TARGET\']);');
 		$this->RegisterTimer("Debug", 0, 'TA_Debug($_IPS[\'TARGET\']);');
+		
+		$associations = [];
+        $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
+        $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
+        $this->CreateVarProfile('User1', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
     }
 
     public function ApplyChanges()
@@ -75,6 +80,7 @@ class TestAndreas extends IPSModule
 
 		if ($device1 != '' && $user1 != '') {
                $ok1 = true;
+			   
                $this->SetStatus(102);
         } 
 		else {
@@ -82,12 +88,29 @@ class TestAndreas extends IPSModule
              $this->SetStatus(104);
         }
     }
-
-         public function UpdateData() {
-			 echo 'Hallo';
-		}
-		 
-		 public function Debug() {
+	
+	// Variablenprofile erstellen
+    private function CreateVarProfile($Name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon, $Asscociations = '')
+    {
+        if (!IPS_VariableProfileExists($Name)) {
+            IPS_CreateVariableProfile($Name, $ProfileType);
+            IPS_SetVariableProfileText($Name, '', $Suffix);
+            IPS_SetVariableProfileValues($Name, $MinValue, $MaxValue, $StepSize);
+            IPS_SetVariableProfileDigits($Name, $Digits);
+            IPS_SetVariableProfileIcon($Name, $Icon);
+            if ($Asscociations != '') {
+                foreach ($Asscociations as $a) {
+                    $w = isset($a['Wert']) ? $a['Wert'] : '';
+                    $n = isset($a['Name']) ? $a['Name'] : '';
+                    $i = isset($a['Icon']) ? $a['Icon'] : '';
+                    $f = isset($a['Farbe']) ? $a['Farbe'] : 0;
+                    IPS_SetVariableProfileAssociation($Name, $w, $n, $i, $f);
+                }
+            }
+        }
+    }
+	
+	     public function Debug() {
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
 			 
 			 $ping = Sys_Ping("$DebugDeviceAddress",1000); 
@@ -103,5 +126,26 @@ class TestAndreas extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
              } 
-		 }		
+		 }
+
+         public function UpdateData() {
+		   $device1 = $this->ReadPropertyString('device1');
+		   $macaddress1 = $this->ReadPropertyString('macaddress1');
+		   
+		   $ping = Sys_Ping("$device1",10); 
+           if ($ping == true) 
+            { 
+              $host = gethostbyaddr($adr); 
+              $output = shell_exec("arp -a $device1");
+              if(strpos($output,$macaddress1)!==false) {
+                 SetValueBoolean(19658 /*Andreas Zuhause (Haus\Übersicht\Test\TestNetzwerkSuche)*/, true);
+              }
+            }
+            else 
+            { 
+                SetValueBoolean(19658 /*Andreas Zuhause (Haus\Übersicht\Test\TestNetzwerkSuche)*/, false);
+            } 
+		}
+		 
+				
 }
