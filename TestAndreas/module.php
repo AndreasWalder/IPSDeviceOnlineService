@@ -48,9 +48,9 @@ class TestAndreas extends IPSModule
 		$this->RegisterTimer("Debug", 0, 'TA_Debug($_IPS[\'TARGET\']);');
 		
 		$associations = [];
-        $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
-        $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
-        $this->CreateVarProfile('TA.Handy', IPS_BOOLEAN, '', 0, 0, 0, 1, 'Heart', $associations);
+        $associations[] = ['Wert' => true, 'Name' => 'Anwesend'];
+        $associations[] = ['Wert' => false, 'Name' => 'Abwesend'];
+        $this->CreateVarProfile('TA.Handy', IPS_BOOLEAN, '', 0, 1, 0, 0, 'Heart', $associations);
     }
 
     public function ApplyChanges()
