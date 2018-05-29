@@ -94,12 +94,13 @@ class TestAndreas extends IPSModule
              if ($ping == true) 
              { 
                 $host = gethostbyaddr($DebugDeviceAddress);
-                $output = shell_exec('arp '.$DebugDeviceAddress.' | awk \'{print $4}\'');    
-				echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
+                $output = shell_exec('arp '.$DebugDeviceAddress.' | awk \'{print $4}\'');
+                echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				echo "$output";
              }
              else 
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
              } 
-		 }
+		 }		
+}
