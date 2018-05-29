@@ -39,7 +39,7 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyString('user4', '');
         $this->RegisterPropertyString('macaddress4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
-		$this->RegisterPropertyString('DebugDeviceName', '');
+		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
 		$this->RegisterPropertyInteger("UpdateInterval", 60);
 		
@@ -69,7 +69,7 @@ class TestAndreas extends IPSModule
         $macaddress4 = $this->ReadPropertyString('macaddress4');
         $active4 = $this->ReadPropertyBoolean('active4');
 		
-		$DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
+		$DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
 		
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
@@ -88,8 +88,23 @@ class TestAndreas extends IPSModule
 		}
 		 
 		 public function Debug() {
-			 $DebugDeviceName = $this->ReadPropertyString('DebugDeviceName');
-			 echo 'Mac-Adresse für ( ' . $DebugDeviceName . ' )';
+			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
+			 echo 'Mac-Adresse für ( ' . $DebugDeviceAddress . ' )';
+			 
+			 $ping = Sys_Ping("$DebugDeviceAddress",10); 
+             if ($ping == true) 
+             { 
+                $host = gethostbyaddr($DebugDeviceAddress); 
+                $output = shell_exec('arp -a '.$DebugDeviceAddress''); //'arp '.$ip.'
+                if {echo "IP: $adr -- Hostname: $host \n";} 
+                if {echo "$output";}
+                }
+             }
+             else 
+             { 
+               if {echo "IP: $adr --> nicht erreichbar \n";} 
+             } 
 		 }
+		 
 		
 }
