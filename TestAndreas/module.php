@@ -103,5 +103,3 @@ class TestAndreas extends IPSModule
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
              } 
 		 }
-		 
-		
