@@ -48,9 +48,9 @@ class TestAndreas extends IPSModule
 		$this->RegisterTimer("Debug", 0, 'TA_Debug($_IPS[\'TARGET\']);');
 		
 		$associations = [];
-        $associations[] = ['Wert' => true, 'Name' => 'Anwesend'];
-        $associations[] = ['Wert' => false, 'Name' => 'Abwesend'];
-        $this->CreateVarProfile('TA.Handy', IPS_BOOLEAN, '', 0, 0, 0, 0, 'Heart', $associations);
+        $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
+        $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
+        $this->CreateVarProfile('TA.Handy', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
     }
 
     public function ApplyChanges()
@@ -89,16 +89,26 @@ class TestAndreas extends IPSModule
         }
     }
 	
-	// Variablenprofile erstellen  
-    private function CreateVarProfile($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon) {
-        if (!IPS_VariableProfileExists($name)) {
-            IPS_CreateVariableProfile($name, $ProfileType);
-            IPS_SetVariableProfileText($name, "", $Suffix);
-            IPS_SetVariableProfileValues($name, $MinValue, $MaxValue, $StepSize);
-            IPS_SetVariableProfileDigits($name, $Digits);
-            IPS_SetVariableProfileIcon($name, $Icon);
-         }
-    }  
+	// Variablenprofile erstellen
+    private function CreateVarProfile($Name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon, $Asscociations = '')
+    {
+        if (!IPS_VariableProfileExists($Name)) {
+            IPS_CreateVariableProfile($Name, $ProfileType);
+            IPS_SetVariableProfileText($Name, '', $Suffix);
+            IPS_SetVariableProfileValues($Name, $MinValue, $MaxValue, $StepSize);
+            IPS_SetVariableProfileDigits($Name, $Digits);
+            IPS_SetVariableProfileIcon($Name, $Icon);
+            if ($Asscociations != '') {
+                foreach ($Asscociations as $a) {
+                    $w = isset($a['Wert']) ? $a['Wert'] : '';
+                    $n = isset($a['Name']) ? $a['Name'] : '';
+                    $i = isset($a['Icon']) ? $a['Icon'] : '';
+                    $f = isset($a['Farbe']) ? $a['Farbe'] : 0;
+                    IPS_SetVariableProfileAssociation($Name, $w, $n, $i, $f);
+                }
+            }
+        }
+    }
 	
 	     public function Debug() {
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
