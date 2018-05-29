@@ -1,6 +1,10 @@
 {
 	"elements":
 			[
+			    { "type": "Label", "label": "Module-Status Meldungen wärend der Installation:" },	
+			    { "type": "ValidationTextBox", "name": "moduleStatus", "caption": "ModuleStatus" },
+				{ "type": "Label", "label": "" },	
+				{ "type": "Label", "label": "" },	
 			    { "type": "ValidationTextBox", "name": "device1", "caption": "Device1" },
 			    { "type": "ValidationTextBox", "name": "user1", "caption": "User1" },
 				{ "type": "ValidationTextBox", "name": "macaddress1", "caption": "Mac Address1" },

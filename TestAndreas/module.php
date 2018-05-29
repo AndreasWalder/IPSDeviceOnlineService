@@ -23,6 +23,7 @@ class TestAndreas extends IPSModule
     {
         parent::Create();
 
+        $this->RegisterPropertyString('moduleStatus', '');
         $this->RegisterPropertyString('device1', '');
         $this->RegisterPropertyString('user1', '');
         $this->RegisterPropertyString('macaddress1', '');
@@ -56,7 +57,8 @@ class TestAndreas extends IPSModule
     public function ApplyChanges()
     {
         parent::ApplyChanges();
-
+ 
+        $moduleStatus = $this->ReadPropertyString('moduleStatus');
         $device1 = $this->ReadPropertyString('device1');
         $user1 = $this->ReadPropertyString('user1');
         $macaddress1 = $this->ReadPropertyString('macaddress1');
@@ -78,15 +80,17 @@ class TestAndreas extends IPSModule
 		
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-		if ($device1 != '' && $user1 != '') {
-               $ok1 = true;
-			   $this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $ok1);
+		if ($device1 != '' && $user1 != '' && $macaddress1 != '') {
+               $ok1 = true;			   
                $this->SetStatus(102);
+			   $moduleStatus = 'Alles OK!';	
         } 
 		else {
-			 $ok1 = false;
+			 $ok1 = false;		
+             $moduleStatus = 'Kein Device1 Name eingetragen!';			 
              $this->SetStatus(104);
         }
+		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $ok1);
     }
 	
 	// Variablenprofile erstellen
