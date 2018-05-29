@@ -98,7 +98,6 @@ class TestAndreas extends IPSModule
                 $output = shell_exec('arp -a '.$DebugDeviceAddress);
                 echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
                 echo '$output';
-                }
              }
              else 
              { 
