@@ -94,7 +94,7 @@ class TestAndreas extends IPSModule
              if ($ping == true) 
              { 
                 $host = gethostbyaddr($DebugDeviceAddress);
-                $output = shell_exec('arp -a 10.0.0.77');
+                $output = shell_exec("arp -a $DebugDeviceAddress");
                 echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				echo "Mac: $output \n";
              }
