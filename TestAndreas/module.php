@@ -80,7 +80,7 @@ class TestAndreas extends IPSModule
 
 		if ($device1 != '' && $user1 != '') {
                $ok1 = true;
-			   $this->MaintainVariable('user1Active', $this->Translate($user1), IPS_INTEGER, 'TA.Handy', $vpos++, true);
+			   $this->MaintainVariable('user1Active', $this->Translate('User1'), IPS_INTEGER, 'TA.Handy', $vpos++, true);
                $this->SetStatus(102);
         } 
 		else {
