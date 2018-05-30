@@ -34,11 +34,11 @@
 	"actions":
 			[
 			    { "type": "Label", "label": "Debug zeigt die Mac-Adresse an:" },		
-				{ "type": "Button", "label": "Debug", "onClick": "TA_Debug($id);" },
+				{ "type": "Button", "label": "Debug", "onClick": "IPSDOS_Debug($id);" },
 				{ "type": "Label", "label": "" },	
 				{ "type": "Label", "label": "" },	
 				{ "type": "Label", "label": "Update zeigt an ob das Device Online ist:" },		
-				{ "type": "Button", "label": "Update", "onClick": "TA_UpdateData($id);" }
+				{ "type": "Button", "label": "Update", "onClick": "IPSDOS_UpdateData($id);" }
 			],		
 	"status":
 			[
