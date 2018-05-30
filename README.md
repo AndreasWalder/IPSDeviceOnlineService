@@ -49,7 +49,7 @@ Anschließend erscheint ein Eintrag für das Modul in der Liste der Instanz _Mod
 
 ### b. Einrichtung in IPS
 
-In IP-Symcon nun _Instanz hinzufügen_ (_CTRL+1_) auswählen unter der Kategorie, unter der man die Instanz hinzufügen will, und Hersteller _(sonstiges)_ und als Gerät _IPSDeviceOnlineService_ auswählen.
+In IP-Symcon nun Instanz hinzufügen_ (_CTRL+1_) auswählen unter der Kategorie, unter der man die Instanz hinzufügen will, und Hersteller _(sonstiges)_ und als Gerät _IPSDeviceOnlineService_ auswählen.
 
 Dann muss man die IP-Adresse, den Namen des Gerätes und die MacAdresse für die genaue Bestimmung des Gerätes eintragen und das Gerät aktiv schalten.
 
