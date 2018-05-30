@@ -1,7 +1,7 @@
 {
 	"elements":
 			[
-			    { "type": "Label", "label": "Modul-Einstellungen:" },	
+			    { "type": "Label", "label": "Instanz-Modul-Einstellungen:" },	
 				{ "type": "Label", "label": "" },	
 				{ "type": "Label", "label": "" },	
 			    { "type": "ValidationTextBox", "name": "device1", "caption": "Device1" },

@@ -1,12 +1,12 @@
 {
-	"id": "{C0E06BF5-D1D1-42018-8CAB-93D161A7CA98}",
+	"id": "{27111985-A1W1-300518-V500-000000000001}",
 	"author": "Andreas Walder",
-	"name": "TestAndreas",
-	"url": "https://github.com/AndreasWalder/IPSymconAndreas",
+	"name": "IPSDeviceOnlineService",
+	"url": "https://github.com/AndreasWalder/IPSDeviceOnlineService",
 	"compatibility": {
-		"version": "4.4"
+		"version": "5.0"
 	},
 	"version": "1.0",
-	"build": 0,
+	"build": 0
 	"date": 1521901144
 }

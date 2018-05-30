@@ -17,7 +17,7 @@ if (!defined('IPS_STRING')) {
     define('IPS_STRING', 3);
 }
 
-class TestAndreas extends IPSModule
+class IPSDeviceOnlineService extends IPSModule
 {
 	
 	// Wird beim Setup vom Modul aufgerufen (ganz am Anfang)
@@ -44,17 +44,17 @@ class TestAndreas extends IPSModule
         $this->RegisterPropertyBoolean('active4', 'false');
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
-		$this->RegisterPropertyInteger("UpdateInterval", 30);
+		$this->RegisterPropertyInteger("UpdateInterval", 5);
 		
 		//Timer erstellen und zum durchreichen der Schaltflächen im Modul 
-		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'TA_UpdateData($_IPS[\'TARGET\']);');
-		$this->RegisterTimer("Debug", 0, 'TA_Debug($_IPS[\'TARGET\']);');
+		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'IPSDOS_UpdateData($_IPS[\'TARGET\']);');
+		$this->RegisterTimer("Debug", 0, 'IPSDOS_Debug($_IPS[\'TARGET\']);');
 		
 		//Erstellen eines Variablenprofile für Typ Integer
 		$associations = [];
         $associations[] = ['Wert' => 1, 'Name' => 'Anwesend'];
         $associations[] = ['Wert' => 0, 'Name' => 'Abwesend'];
-        $this->CreateVarProfile('TA.Handy', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
+        $this->CreateVarProfile('IPSDOS.Status', IPS_INTEGER, '', 0, 0, 0, 1, 'Heart', $associations);
     }
 	
 	// Variablenprofile erstellen
@@ -117,31 +117,31 @@ class TestAndreas extends IPSModule
              $this->SetStatus(104);
         }
 		
-		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil TA.Handy wenn $ok1 true (Module IO) ist
-		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "TA.Handy", 0, $ok1);
+		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
+		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
 		
 		// ab dem Device2 nur noch Variable löschen wenn nicht alles ausgefüllt Instanz bleibt aktiv
 		if ($device2 != '' && $user2 != '' && $macaddress2 != '') {
-          $this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "TA.Handy", 0, true);     	   
+          $this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
         } 
 		else {
-			$this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "TA.Handy", 0, false); 
+			$this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
 		
 		//..
 		if ($device3 != '' && $user3 != '' && $macaddress3 != '') {
-          $this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "TA.Handy", 0, true);     	   
+          $this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
         } 
 		else {
-			$this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "TA.Handy", 0, false); 
+			$this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
 		
 		//..
 		if ($device4 != '' && $user4 != '' && $macaddress4 != '') {
-          $this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "TA.Handy", 0, true);     	   
+          $this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
         } 
 		else {
-			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "TA.Handy", 0, false); 
+			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
 	
 	}

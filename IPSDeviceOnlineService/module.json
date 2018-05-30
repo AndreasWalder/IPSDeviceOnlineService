@@ -1,0 +1,13 @@
+{
+	"id": "{8C110C1C-F011-4C65-925D-6FEE0D8F1A10}",
+	"name": "IPSDeviceOnlineService",
+	"type": 3,
+	"vendor": "",
+	"aliases": [
+		"IPSDeviceOnlineService"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "IPSDOS"
+}
