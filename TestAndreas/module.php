@@ -76,7 +76,7 @@ class TestAndreas extends IPSModule
 		
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-		if ($device1 != '' && $user1 != '' && $macaddress1 != '' && $active1 = true) {
+		if ($device1 != '' && $user1 != '' && $macaddress1 != '' && $active1 == true) {
                $ok1 = true;			   
                $this->SetStatus(102);		   
         } 
