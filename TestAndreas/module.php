@@ -76,7 +76,7 @@ class TestAndreas extends IPSModule
 		
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-		if ($device1 != '' && $user1 != '' && $macaddress1 != '') {
+		if ($device1 != '' && $user1 != '' && $macaddress1 != '' && $active1 = true) {
                $ok1 = true;			   
                $this->SetStatus(102);		   
         } 
@@ -137,16 +137,12 @@ class TestAndreas extends IPSModule
               $host = gethostbyaddr($adr); 
               $output = shell_exec("arp -a $device1");
               if(strpos($output,$macaddress1)!==false) {
-				 $ParentVarID = IPS_GetParent($_IPS['SELF']);
-                 $VarID = @IPS_GetObjectIDByIdent("user1Active", $ParentVarID);
-                 SetValueInteger($VarID, 1);
+				$this->SetValue('user1Active', true);
               }
             }
             else 
             { 
-		        $ParentVarID = IPS_GetParent($_IPS['SELF']);
-                $VarID = @IPS_GetObjectIDByIdent("user1Active", $ParentVarID);
-                SetValueInteger($VarID, 0);
+		        $this->SetValue('user1Active', false);
             } 
 		}
 		 
