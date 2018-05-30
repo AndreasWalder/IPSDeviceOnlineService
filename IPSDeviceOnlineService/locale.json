@@ -1,13 +1,13 @@
 {
 	"translations": {
 		"de": {
-		    "Device1": "Gerät1",
+		    "Device1": "IP-Adresse1",
 			"Active1": "Aktiv1",
-			"Device2": "Gerät2",
+			"Device2": "IP-Adresse2",
 			"Active2": "Aktiv2",
-			"Device3": "Gerät3",
+			"Device3": "IP-Adresse3",
 			"Active3": "Aktiv3",
-			"Device4": "Gerät4",
+			"Device4": "IP-Adresse4",
 			"Active4": "Aktiv4",
 			"Instance getting created": "Instanz wird erstellt",
 			"Instance is active": "Instanz ist aktiv",
