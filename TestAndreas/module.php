@@ -134,7 +134,7 @@ class TestAndreas extends IPSModule
 		   $ping = Sys_Ping("$device1",10); 
            if ($ping == true) 
             { 
-              $host = gethostbyaddr($adr); 
+              $host = gethostbyaddr($device1); 
               $output = shell_exec("arp -a $device1");
               if(strpos($output,$macaddress1)!==false) {
 				$this->SetValue('user1Active', true);
