@@ -21,7 +21,7 @@ if (!defined('IPS_STRING')) {
 
 class IPSDeviceOnlineService extends IPSModule
 {
-	$Instanz = 0;
+	public $Instanz = 0;
 	
 	// Wird beim Setup vom Modul aufgerufen (ganz am Anfang)
     public function Create()
