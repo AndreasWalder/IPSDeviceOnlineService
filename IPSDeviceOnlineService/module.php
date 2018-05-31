@@ -21,8 +21,6 @@ if (!defined('IPS_STRING')) {
 
 class IPSDeviceOnlineService extends IPSModule
 {
-	public $Instanz = 0;
-	
 	// Wird beim Setup vom Modul aufgerufen (ganz am Anfang)
     public function Create()
     {
@@ -83,6 +81,19 @@ class IPSDeviceOnlineService extends IPSModule
         }
     }
 	
+	private function GetInstanzId()
+	{
+		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
+        // schauen ob es die Instanz gibt
+        if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+        $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
+        IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt1"); 
+        //IPS_ApplyChanges($Instanz); //Neue Konfiguration übernehmen
+        //echo $Instanz;
+        }
+		return $Instanz;
+	}
+	
 	
     // Wird aufgerufen wenn im Modul was verändert wird
     public function ApplyChanges()
@@ -137,15 +148,7 @@ class IPSDeviceOnlineService extends IPSModule
 	       break;
           }
         }
-		
-		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
-        // schauen ob es die Instanz gibt
-        if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
-        $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-        IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt1"); 
-        //IPS_ApplyChanges($Instanz); //Neue Konfiguration übernehmen
-        //echo $Instanz;
-        }
+
 		
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
@@ -153,6 +156,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
+	    $Instanz = GetInstanzId();
 	    $VariablenID = @IPS_GetVariableIDByName($user1, $Instanz);
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
@@ -242,7 +246,7 @@ class IPSDeviceOnlineService extends IPSModule
 		}
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           
+		           $Instanz = GetInstanzId();
                    If ($Instanz) {
                    IPS_SetProperty($Instanz, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
