@@ -80,21 +80,7 @@ class IPSDeviceOnlineService extends IPSModule
             }
         }
     }
-	
-	public function GetInstanzId()
-	{
-		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
-        // schauen ob es die Instanz gibt
-        if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
-        $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-        IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt1"); 
-        //IPS_ApplyChanges($Instanz); //Neue Konfiguration übernehmen
-        //echo $Instanz;
-        }
-		return $Instanz;
-	}
-	
-	
+		
     // Wird aufgerufen wenn im Modul was verändert wird
     public function ApplyChanges()
     {
@@ -156,7 +142,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
-	    $InstanzId = GetInstanzId();
+	    $InstanzId = GetInstanzId($InstanzId);
 	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId());
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
@@ -245,8 +231,21 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
+		public function GetInstanzId($InstanzId)
+	    {
+		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
+          // schauen ob es die Instanz gibt
+          if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+           $InstanzId = IPS_GetInstanceListByModuleID($guid)[0];
+           IPS_SetProperty($$InstanzId, "DebugMacAddress", "Hallo Welt1"); 
+           //IPS_ApplyChanges($$InstanzId); //Neue Konfiguration übernehmen
+           //echo $$InstanzId;
+           }
+		 return $InstanzId;
+	    }
+		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           $InstanzId = GetInstanzId();
+		           $InstanzId = GetInstanzId($InstanzId);
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
