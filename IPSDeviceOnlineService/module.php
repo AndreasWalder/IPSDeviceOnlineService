@@ -134,6 +134,12 @@ class IPSDeviceOnlineService extends IPSModule
 	       break;
           }
         }
+		
+		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
+          // schauen ob es die Instanz gibt
+          if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+           $InstanzId = IPS_GetInstanceListByModuleID($guid)[0];
+          }
 
 		
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
@@ -142,7 +148,6 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
-	    $InstanzId = GetInstanzId();
 	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId);
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
