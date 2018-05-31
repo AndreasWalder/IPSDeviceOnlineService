@@ -125,12 +125,13 @@ class IPSDeviceOnlineService extends IPSModule
         }
 		
 	    //  Archive Control finden
-        foreach ( IPS_GetInstanceListByModuleType(0) as $modul )
+        foreach (IPS_GetInstanceListByModuleType(0) as $modul)
         {
           $archive_id = false;
 		  $instance = IPS_GetInstance($modul);
-		  if ( $instance['ModuleInfo']['ModuleName'] == "Archive Control" ){ 
-		    $archive_id = $modul; break; 
+		  if ( $instance['ModuleInfo']['ModuleName'] == "Archive Control" ){
+		    $archive_id = $modul;
+			break;
 		  }
 	    }
 		
