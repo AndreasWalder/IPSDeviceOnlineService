@@ -159,6 +159,7 @@ class IPSDeviceOnlineService extends IPSModule
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
 			 
+			
 			 if ($DebugDeviceAddress == '') {
 				 ShowMacAdresse("");
 				 return;
@@ -196,7 +197,7 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
-		private function ShowMacAdresse ($setPropertyNameMac) {
+		private function ShowMacAdresse($setPropertyNameMac) {
 		
 		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
                 
