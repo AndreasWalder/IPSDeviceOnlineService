@@ -124,38 +124,15 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 		
-	    //  Archive Control finden
-        foreach (IPS_GetInstanceListByModuleType(0) as $modul)
-        {
-         $archive_id = false;
-         $instance = IPS_GetInstance($modul);
-          if ($instance['ModuleInfo']['ModuleName'] == "Archive Control"){
-	       $archive_id = $modul;
-	       break;
-          }
-        }
-		
-		
+	    	
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
-		
-		//Logging für diese Variable einschalten
-		if ($archive_id)
-        {
-	    $InstanzId = $this->GetInstanzId();
-	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId);
-		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
-		IPS_ApplyChanges($archive_id /*[Archive]*/);
-		}
-		
+		$this->LoggingEnable($user1); //Logging für diese Variable einschalten
+				
 		// ab dem Device2 nur noch Variable löschen wenn nicht alles ausgefüllt Instanz bleibt aktiv
 		if ($device2 != '' && $user2 != '' && $macaddress2 != '') {
           $this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, true);        
-		   //Logging für diese Variable einschalten
-		   if ($archive_id)
-           {
-		   AC_SetLoggingStatus($archive_id,  $user2, True); // Logging einschalten	
-		   }		  
+		  $this->LoggingEnable($user2);	//Logging für diese Variable einschalten
         } 
 		else {
 			$this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -164,11 +141,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//..
 		if ($device3 != '' && $user3 != '' && $macaddress3 != '') {
           $this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, true);   
-          //Logging für diese Variable einschalten
-		   if ($archive_id)
-           {
-		   AC_SetLoggingStatus($archive_id,  $user3, True); // Logging einschalten	
-		   }		  		  
+          $this->LoggingEnable($user3);	//Logging für diese Variable einschalten
         } 
 		else {
 			$this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -177,11 +150,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//..
 		if ($device4 != '' && $user4 != '' && $macaddress4 != '') {
           $this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, true);
-          //Logging für diese Variable einschalten
-		   if ($archive_id)
-           {
-		   AC_SetLoggingStatus($archive_id,  $user4, True); // Logging einschalten	
-		   }		  		  
+          $this->LoggingEnable($user4);	//Logging für diese Variable einschalten  		  
         } 
 		else {
 			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -230,6 +199,29 @@ class IPSDeviceOnlineService extends IPSModule
 			   $this->ShowMacAdresse($macAddr);
              }
 		}
+		
+		private function LoggingEnable($LoggingVariableName) {
+			//  Archive Control finden
+            foreach (IPS_GetInstanceListByModuleType(0) as $modul)
+            {
+              $archive_id = false;
+              $instance = IPS_GetInstance($modul);
+                if ($instance['ModuleInfo']['ModuleName'] == "Archive Control"){
+	              $archive_id = $modul;
+	              break;
+                }
+            }
+		    //Logging für diese Variable einschalten
+		    if ($archive_id) //wenn Archive Control gefunden
+            {
+	          $InstanzId = $this->GetInstanzId(); // Instanz ID herausfinden
+	          $VariablenID = @IPS_GetVariableIDByName($LoggingVariableName, $InstanzId); // VariableID suchen nach Variable NAME	
+		      AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten für die Variable nach ID
+		      IPS_ApplyChanges($archive_id /*[Archive]*/); // Änderung in Modul Archive übernehmen
+		    }			
+			
+		}
+		
 		
 		private function GetInstanzId() {
 		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
