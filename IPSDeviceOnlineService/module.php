@@ -166,8 +166,8 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
-			   IPS_SetProperty($id, 'DebugMacAddress', 'Hallo'); 
-			   
+			   $InsID = IPS_CreateInstance("{8C110C1C-F011-4C65-925D-6FEE0D8F1A10}");
+               IPS_SetProperty($InsID, "DebugMacAddress", "12345678");
              } 
 		 }
 
