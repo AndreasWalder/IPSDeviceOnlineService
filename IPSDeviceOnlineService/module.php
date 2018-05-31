@@ -23,6 +23,7 @@ class IPSDeviceOnlineService extends IPSModule
 	// Wird beim Setup vom Modul aufgerufen (ganz am Anfang)
     public function Create()
     {
+		
         parent::Create();
 		
 		//Erstellen von Verlinkungen zum Modul
@@ -166,7 +167,7 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
-			   $InsID = IPS_CreateInstance("{8C110C1C-F011-4C65-925D-6FEE0D8F1A10}");
+			   $InsID = IPS_CreateInstance("{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}");
                IPS_SetProperty($InsID, "DebugMacAddress", "12345678");
              } 
 		 }
