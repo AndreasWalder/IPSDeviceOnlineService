@@ -170,7 +170,7 @@ class IPSDeviceOnlineService extends IPSModule
                 foreach($lines as $line)
                  {
                    $cols=preg_split('/\s+/', trim($line));
-                   if ($cols[0]==$ipAddress)
+                   if ($cols[0]==$DebugDeviceAddress)
                      {
                        $macAddr=$cols[1];
                       }
