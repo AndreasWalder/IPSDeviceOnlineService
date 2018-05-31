@@ -236,8 +236,7 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
-		public function GetInstanzId()
-	    {
+		private function GetInstanzId() {
 		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
           // schauen ob es die Instanz gibt
           if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
@@ -254,6 +253,7 @@ class IPSDeviceOnlineService extends IPSModule
                    //echo $InstanzId;
 				   }			
 		}
+		
 
          public function UpdateData() {
 		   
