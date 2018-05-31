@@ -173,12 +173,15 @@ class IPSDeviceOnlineService extends IPSModule
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
 			   // meine Instanz GUID 
-			   $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
-			   // schauen ob es die Instanz gibt
-               if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
-				 $this->IPS_SetProperty(IPS_GetInstanceListByModuleID($guid)[0], "DebugMacAddress", "Hallo Welt"); 
-                 //echo IPS_GetInstanceListByModuleID($guid)[0];
-               }
+			  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
+              // schauen ob es die Instanz gibt
+                if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+                   $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
+                   IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt"); 
+                   // echo $Instanz;
+                }
+
+
 			   
 			   
 			   
