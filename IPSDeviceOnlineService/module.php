@@ -111,10 +111,15 @@ class IPSDeviceOnlineService extends IPSModule
 
 		// Instanz Status setzen (aktiv -> inaktiv)
 		if ($device1 != '' && $user1 != '' && $macaddress1 != '') {
-               $ok1 = true;			   
+			   // Zeigt Info neben der Instanz
+			   $this->SetSummary("OK");
+			   
+               $ok1 = true;		
+               // setzt Instanz Status auf aktiv			   
                $this->SetStatus(102);		   
         } 
 		else {
+			 $this->SetSummary("Fehler");
 			 $ok1 = false;		 
              $this->SetStatus(104);
         }
@@ -167,7 +172,9 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
-			   $this->SetSummary($this->ReadPropertyString("DebugMacAddress"));
+			   
+			   
+			   $this->SetBuffer("DebugMacAddress", "Hallo Welt");
       
              } 
 		 }
