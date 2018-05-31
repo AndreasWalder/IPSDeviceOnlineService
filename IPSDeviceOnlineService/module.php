@@ -246,7 +246,7 @@ class IPSDeviceOnlineService extends IPSModule
 	    }
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           $InstanzId = InstanzId();
+		           $InstanzId = $this->InstanzId();
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
