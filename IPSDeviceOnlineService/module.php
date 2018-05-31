@@ -161,7 +161,7 @@ class IPSDeviceOnlineService extends IPSModule
 			 
 			
 			 if ($DebugDeviceAddress == '') {
-				 ShowMacAdresse("");
+				 $this->ShowMacAdresse('');
 				 return;
 			 }				 
 			 
@@ -179,7 +179,7 @@ class IPSDeviceOnlineService extends IPSModule
                    if ($cols[0]==$DebugDeviceAddress)
                      {
                        $macAddr=$cols[1];
-					   ShowMacAdresse($macAddr);
+					   $this->ShowMacAdresse($macAddr);
                      }
                  }
 				 
@@ -194,7 +194,7 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   $macAddr = '';
-			   ShowMacAdresse($macAddr);
+			   $this->ShowMacAdresse($macAddr);
              }
 		}
 		
