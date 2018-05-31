@@ -127,13 +127,22 @@ class IPSDeviceOnlineService extends IPSModule
 	    //  Archive Control finden
         foreach (IPS_GetInstanceListByModuleType(0) as $modul)
         {
-          $archive_id = false;
-		  $instance = IPS_GetInstance($modul);
-		  if ( $instance['ModuleInfo']['ModuleName'] == "Archive Control" ){
-		    $archive_id = $modul;
-			break;
-		  }
-	    }
+         $archive_id = false;
+         $instance = IPS_GetInstance($modul);
+          if ($instance['ModuleInfo']['ModuleName'] == "Archive Control"){
+	       $archive_id = $modul;
+	       break;
+          }
+        }
+		
+		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
+        // schauen ob es die Instanz gibt
+        if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+        $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
+        IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt1"); 
+        //IPS_ApplyChanges($Instanz); //Neue Konfiguration übernehmen
+        //echo $Instanz;
+        }
 		
 		
 		
@@ -143,7 +152,9 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
-		AC_SetLoggingStatus($archive_id,  $user1, True); // Logging einschalten	
+	    $VariablenID = @IPS_GetVariableIDByName($user1, $Instanz);
+		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
+		IPS_ApplyChanges($archive_id /*[Archive]*/);
 		}
 		
 		// ab dem Device2 nur noch Variable löschen wenn nicht alles ausgefüllt Instanz bleibt aktiv
@@ -186,9 +197,6 @@ class IPSDeviceOnlineService extends IPSModule
         }
 	
 	}
-	
-	
-	
 	     public function Debug() {
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
@@ -233,17 +241,14 @@ class IPSDeviceOnlineService extends IPSModule
 		}
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		     
-			 
-		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
-                
+		     		 
+		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID          
              if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
                    $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
                    IPS_SetProperty($Instanz, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
                    //echo $Instanz;
-				}
-		    
+				} 
 		}
 		
 
