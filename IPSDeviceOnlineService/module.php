@@ -165,10 +165,21 @@ class IPSDeviceOnlineService extends IPSModule
                 $host = gethostbyaddr($DebugDeviceAddress);
                 $output = shell_exec("arp -a $DebugDeviceAddress");
 				
+				$lines=explode("\n", $arp);
+                #look for the output line describing our IP address
+                foreach($lines as $output)
+                 {
+                   $cols=preg_split('/\s+/', trim($line));
+                   if ($cols[0]==$ipAddress)
+                     {
+                       $macAddr=$cols[1];
+                      }
+                 }
+				
 				$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
                 if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
                    $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-                   IPS_SetProperty($Instanz, "DebugMacAddress", $output); //neuen Wert setzen
+                   IPS_SetProperty($Instanz, "DebugMacAddress", $macAddr); //neuen Wert setzen
 				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
                    //echo $Instanz;
 				}
