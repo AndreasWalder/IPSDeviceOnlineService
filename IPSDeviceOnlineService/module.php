@@ -135,12 +135,6 @@ class IPSDeviceOnlineService extends IPSModule
           }
         }
 		
-		$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
-          // schauen ob es die Instanz gibt
-          if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
-           $InstanzId = IPS_GetInstanceListByModuleID($guid)[0];
-          }
-
 		
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
@@ -148,6 +142,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
+	    $InstanzId = $this->GetInstanzId();
 	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId);
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
@@ -236,7 +231,7 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
-		private function InstanzId() {
+		private function GetInstanzId() {
 		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
           // schauen ob es die Instanz gibt
           if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
@@ -246,7 +241,7 @@ class IPSDeviceOnlineService extends IPSModule
 	    }
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           $InstanzId = $this->InstanzId();
+		           $InstanzId = $this->GetInstanzId();
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
