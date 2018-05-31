@@ -236,7 +236,7 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
-		private function GetInstanzId() {
+		private function InstanzId() {
 		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
           // schauen ob es die Instanz gibt
           if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
@@ -246,7 +246,7 @@ class IPSDeviceOnlineService extends IPSModule
 	    }
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           GetInstanzId();
+		           $InstanzId = InstanzId();
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
