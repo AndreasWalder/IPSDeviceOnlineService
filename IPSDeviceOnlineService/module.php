@@ -178,7 +178,7 @@ class IPSDeviceOnlineService extends IPSModule
                 if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
                    $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
                    IPS_SetProperty($Instanz, "DebugMacAddress", "Hallo Welt"); 
-                   // echo $Instanz;
+                   echo $Instanz;
                 }
 
 
