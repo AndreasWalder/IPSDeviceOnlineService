@@ -165,9 +165,9 @@ class IPSDeviceOnlineService extends IPSModule
                 $host = gethostbyaddr($DebugDeviceAddress);
                 $output = shell_exec("arp -a $DebugDeviceAddress");
 				
-				$lines=explode("\n", $arp);
+				$lines=explode("\n", $output);
                 #look for the output line describing our IP address
-                foreach($lines as $output)
+                foreach($lines as $line)
                  {
                    $cols=preg_split('/\s+/', trim($line));
                    if ($cols[0]==$ipAddress)
