@@ -143,7 +143,7 @@ class IPSDeviceOnlineService extends IPSModule
 		if ($archive_id)
         {
 	    $InstanzId = GetInstanzId();
-	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId());
+	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId);
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
 		}
