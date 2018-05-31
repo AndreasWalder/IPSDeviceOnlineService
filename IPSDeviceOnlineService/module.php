@@ -159,6 +159,11 @@ class IPSDeviceOnlineService extends IPSModule
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
 			 
+			 if ($DebugDeviceAddress == '') {
+				 ShowMacAdresse("");
+				 return;
+			 }				 
+			 
 			 $ping = Sys_Ping("$DebugDeviceAddress",1000); 
              if ($ping == true) 
              { 
@@ -173,29 +178,36 @@ class IPSDeviceOnlineService extends IPSModule
                    if ($cols[0]==$DebugDeviceAddress)
                      {
                        $macAddr=$cols[1];
-                      }
+					   ShowMacAdresse($macAddr);
+                     }
                  }
-				
-				$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
-                if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
-                   $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-                   IPS_SetProperty($Instanz, "DebugMacAddress", $macAddr); //neuen Wert setzen
-				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
-                   //echo $Instanz;
-				}
-                echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
+				 
+				echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				echo "Mac: $macAddr \n";
 				echo "\n";
 				echo "Bitte Instanz (Modul) kurz schließen und wieder öffnen, dann wird \n";
 				echo "die MAC-Adresse im Feld <Angezeigte Adresse> angezeigt ;-)\n";
 				echo "und kann kopiert werden (Strg-C).\n";
-				
              }
              else 
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
+			   ShowMacAdresse("");
              }
 		}
+		
+		private function ShowMacAdresse ($setPropertyNameMac) {
+		
+		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
+                
+             if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
+                   $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
+                   IPS_SetProperty($Instanz, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
+				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
+                   //echo $Instanz;
+				}
+		}
+		
 
          public function UpdateData() {
 		   
