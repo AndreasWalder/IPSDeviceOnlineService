@@ -184,7 +184,7 @@ class IPSDeviceOnlineService extends IPSModule
                    //echo $Instanz;
 				}
                 echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
-				echo "Mac: $output \n";
+				echo "Mac: $macAddr \n";
              }
              else 
              { 
