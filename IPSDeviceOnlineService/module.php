@@ -165,29 +165,21 @@ class IPSDeviceOnlineService extends IPSModule
                 $host = gethostbyaddr($DebugDeviceAddress);
                 $output = shell_exec("arp -a $DebugDeviceAddress");
 				
+				$guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
+                if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
+                   $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
+                   IPS_SetProperty($Instanz, "DebugMacAddress", $output); //neuen Wert setzen
+				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
+                   //echo $Instanz;
+				}
                 echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				echo "Mac: $output \n";
              }
              else 
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
-			   
-			   
-			  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
-                if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
-                   $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-                   IPS_SetProperty($Instanz, "DebugMacAddress", 'Hallo Welt'); //neuen Wert setzen
-				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
-                   //echo $Instanz;
-                }
-
-
-			   
-			   
-			   
-			  
-             } 
-		 }
+             }
+		}
 
          public function UpdateData() {
 		   
