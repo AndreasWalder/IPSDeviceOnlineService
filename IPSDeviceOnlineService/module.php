@@ -45,6 +45,7 @@ class IPSDeviceOnlineService extends IPSModule
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
 		$this->RegisterPropertyInteger("UpdateInterval", 5);
+		$this->RegisterPropertyString('DebugMacAddress', '');
 		
 		//Timer erstellen und zum durchreichen der Schaltflächen im Modul 
 		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'IPSDOS_UpdateData($_IPS[\'TARGET\']);');
@@ -165,7 +166,7 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
-			   $this->RegisterPropertyString('DebugMacAddress', 'Hallo');
+			   IPS_SetProperty($id, 'DebugMacAddress', 'Hallo'); 
 			   
              } 
 		 }
