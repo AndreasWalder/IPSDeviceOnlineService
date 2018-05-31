@@ -30,6 +30,8 @@
 				{ "type": "Label", "label": "" },	
 				{ "type": "Label", "label": "Ip Adresse für Debug:" },	
 				{ "type": "ValidationTextBox", "name": "DebugDeviceAddress", "caption": "Debug Device Address" }
+				{ "type": "Label", "label": "Angezeigte Mac-Adresse:" },	
+				{ "type": "ValidationTextBox", "name": "DebugMacAddress", "caption": "Angezeigte Address" }
 			],
 	"actions":
 			[

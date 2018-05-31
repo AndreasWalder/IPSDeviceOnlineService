@@ -164,6 +164,9 @@ class IPSDeviceOnlineService extends IPSModule
              else 
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
+			   
+			   $this->RegisterPropertyString('DebugMacAddress', 'Hallo');
+			   
              } 
 		 }
 
