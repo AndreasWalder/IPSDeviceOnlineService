@@ -199,7 +199,8 @@ class IPSDeviceOnlineService extends IPSModule
 		}
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		
+		     
+			 $this->SetStatus(104);
 		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
                 
              if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
@@ -208,6 +209,7 @@ class IPSDeviceOnlineService extends IPSModule
 				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
                    //echo $Instanz;
 				}
+		    $this->SetStatus(102);	
 		}
 		
 
