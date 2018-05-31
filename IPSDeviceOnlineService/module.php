@@ -46,7 +46,7 @@ class IPSDeviceOnlineService extends IPSModule
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
 		$this->RegisterPropertyInteger("UpdateInterval", 5);
-		$this->RegisterPropertyString("DebugMacAddress", 'auf Debug klicken!');
+		$this->RegisterPropertyString("DebugMacAddress", '');
 		
 		//Timer erstellen und zum durchreichen der Schaltflächen im Modul 
 		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'IPSDOS_UpdateData($_IPS[\'TARGET\']);');
@@ -172,12 +172,12 @@ class IPSDeviceOnlineService extends IPSModule
              { 
                echo "IP: $DebugDeviceAddress --> nicht erreichbar \n"; 
 			   
-			   // meine Instanz GUID 
-			  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
-              // schauen ob es die Instanz gibt
-                if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
+			   
+			  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
+                if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
                    $Instanz = IPS_GetInstanceListByModuleID($guid)[0];
-                   IPS_SetProperty($Instanz, "DebugMacAddress", 'Hallo Welt'); 
+                   IPS_SetProperty($Instanz, "DebugMacAddress", 'Hallo Welt'); //neuen Wert setzen
+				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
                    //echo $Instanz;
                 }
 
