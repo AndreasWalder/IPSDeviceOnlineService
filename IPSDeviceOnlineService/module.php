@@ -142,7 +142,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//Logging für diese Variable einschalten
 		if ($archive_id)
         {
-	    $InstanzId = GetInstanzId($InstanzId);
+	    $InstanzId = GetInstanzId();
 	    $VariablenID = @IPS_GetVariableIDByName($user1, $InstanzId());
 		AC_SetLoggingStatus($archive_id,  $VariablenID, True); // Logging einschalten
 		IPS_ApplyChanges($archive_id /*[Archive]*/);
@@ -231,21 +231,18 @@ class IPSDeviceOnlineService extends IPSModule
              }
 		}
 		
-		public function GetInstanzId($InstanzId)
+		public function GetInstanzId()
 	    {
 		  $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}";
           // schauen ob es die Instanz gibt
           if (IPS_GetInstanceListByModuleID($guid)[0] != '') {
            $InstanzId = IPS_GetInstanceListByModuleID($guid)[0];
-           IPS_SetProperty($$InstanzId, "DebugMacAddress", "Hallo Welt1"); 
-           //IPS_ApplyChanges($$InstanzId); //Neue Konfiguration übernehmen
-           //echo $$InstanzId;
            }
 		 return $InstanzId;
 	    }
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
-		           $InstanzId = GetInstanzId($InstanzId);
+		           $InstanzId = GetInstanzId();
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
