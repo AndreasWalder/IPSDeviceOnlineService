@@ -124,12 +124,35 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 		
+	    //  Archive Control finden
+        foreach ( IPS_GetInstanceListByModuleType(0) as $modul )
+        {
+          $archive_id = false;
+		  $instance = IPS_GetInstance($modul);
+		  if ( $instance['ModuleInfo']['ModuleName'] == "Archive Control" ){ 
+		    $archive_id = $modul; break; 
+		  }
+	    }
+		
+		
+		
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
 		
+		//Logging für diese Variable einschalten
+		if ($archive_id)
+        {
+		AC_SetLoggingStatus($archive_id,  $user1, True); // Logging einschalten	
+		}
+		
 		// ab dem Device2 nur noch Variable löschen wenn nicht alles ausgefüllt Instanz bleibt aktiv
 		if ($device2 != '' && $user2 != '' && $macaddress2 != '') {
-          $this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
+          $this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, true);        
+		   //Logging für diese Variable einschalten
+		   if ($archive_id)
+           {
+		   AC_SetLoggingStatus($archive_id,  $user2, True); // Logging einschalten	
+		   }		  
         } 
 		else {
 			$this->MaintainVariable("user2Active", $user2, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -137,7 +160,12 @@ class IPSDeviceOnlineService extends IPSModule
 		
 		//..
 		if ($device3 != '' && $user3 != '' && $macaddress3 != '') {
-          $this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
+          $this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, true);   
+          //Logging für diese Variable einschalten
+		   if ($archive_id)
+           {
+		   AC_SetLoggingStatus($archive_id,  $user3, True); // Logging einschalten	
+		   }		  		  
         } 
 		else {
 			$this->MaintainVariable("user3Active", $user3, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -145,7 +173,12 @@ class IPSDeviceOnlineService extends IPSModule
 		
 		//..
 		if ($device4 != '' && $user4 != '' && $macaddress4 != '') {
-          $this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, true);     	   
+          $this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, true);
+          //Logging für diese Variable einschalten
+		   if ($archive_id)
+           {
+		   AC_SetLoggingStatus($archive_id,  $user4, True); // Logging einschalten	
+		   }		  		  
         } 
 		else {
 			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
@@ -200,7 +233,7 @@ class IPSDeviceOnlineService extends IPSModule
 		
 		private function ShowMacAdresse($setPropertyNameMac) {
 		     
-			 $this->SetStatus(104);
+			 
 		     $guid = "{8C110C1C-F011-4C65-925D-6FEE0D8F1A11}"; // meine Instanz GUID 	 
                 
              if (IPS_GetInstanceListByModuleID($guid)[0] != '') { // schauen ob es die Instanz gibt
@@ -209,7 +242,7 @@ class IPSDeviceOnlineService extends IPSModule
 				   IPS_ApplyChanges($Instanz); //neuen Wert übernehmen
                    //echo $Instanz;
 				}
-		    $this->SetStatus(102);	
+		    
 		}
 		
 
