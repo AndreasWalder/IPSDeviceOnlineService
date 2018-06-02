@@ -246,104 +246,106 @@ class IPSDeviceOnlineService extends IPSModule
 		
 
          public function UpdateData() {
-		   
-		   //Function für Device 1:
-		   $active1 = $this->ReadPropertyBoolean('active1');
-		   if ($active1 == true) {
-		     $device1 = $this->ReadPropertyString('device1');
-		     $macaddress1 = $this->ReadPropertyString('macaddress1');
-		     $user1 = $this->ReadPropertyString('user1');
 			 
-		     if ($device1 != '' && $user1 != '' && $macaddress1 != '') {		   
-		      $ping1 = Sys_Ping("$device1",10); 
-              if ($ping1 == true) 
-               { 
-                $host1 = gethostbyaddr($device1); 
-                $output1 = shell_exec("arp -a $device1");
-                  if(strpos($output1,$macaddress1)!==false) {
-				  $this->SetValue('user1Active', true);
-                  }
-               }
-               else 
-               { 
-		         $this->SetValue('user1Active', false);
-               }
-		    }
-		  }
-		  
-		  //Function für Device 2:
-		   $active2 = $this->ReadPropertyBoolean('active2');
-		   if ($active2 == true) {
-		     $device2 = $this->ReadPropertyString('device2');
-		     $macaddress2 = $this->ReadPropertyString('macaddress2');
-		     $user2 = $this->ReadPropertyString('user2');
-			 
-		     if ($device2 != '' && $user2 != '' && $macaddress2 != '') {		   
-		      $ping2 = Sys_Ping("$device2",10); 
-              if ($ping2 == true) 
-               { 
-                $host2 = gethostbyaddr($device2); 
-                $output2 = shell_exec("arp -a $device2");
-                  if(strpos($output2,$macaddress2)!==false) {
-				  $this->SetValue('user2Active', true);
-                  }
-               }
-               else 
-               { 
-		         $this->SetValue('user2Active', false);
-               }
-		    }
-		  }
-		  
-		  //Function für Device 3:
-		   $active3 = $this->ReadPropertyBoolean('active3');
-		   if ($active3 == true) {
-		     $device3 = $this->ReadPropertyString('device3');
-		     $macaddress3 = $this->ReadPropertyString('macaddress3');
-		     $user3 = $this->ReadPropertyString('user3');
-			 
-		     if ($device3 != '' && $user3 != '' && $macaddress3 != '') {		   
-		      $ping3 = Sys_Ping("$device3",10); 
-              if ($ping3 == true) 
-               { 
-                $host3 = gethostbyaddr($device3); 
-                $output3 = shell_exec("arp -a $device3");
-                  if(strpos($output3,$macaddress3)!==false) {
-				  $this->SetValue('user3Active', true);
-                  }
-               }
-               else 
-               { 
-		         $this->SetValue('user3Active', false);
-               }
-		    }
-		  }
-		  
-		  //Function für Device 4:
-		   $active4 = $this->ReadPropertyBoolean('active4');
-		   if ($active4 == true) {
-		     $device4 = $this->ReadPropertyString('device4');
-		     $macaddress4 = $this->ReadPropertyString('macaddress4');
-		     $user4 = $this->ReadPropertyString('user4');
-			 
-		     if ($device4 != '' && $user4 != '' && $macaddress4 != '') {		   
-		      $ping4 = Sys_Ping("$device4",10); 
-              if ($ping4 == true) 
-               { 
-                $host4 = gethostbyaddr($device4); 
-                $output4 = shell_exec("arp -a $device4");
-                  if(strpos($output4,$macaddress4)!==false) {
-				  $this->SetValue('user4Active', true);
-                  }
-               }
-               else 
-               { 
-		         $this->SetValue('user4Active', false);
-               }
-		    }
-		  }
+		  for ($x = 0; $x <= 5; $x++) {
 
-		  
+				   //Function für Device 1:
+				   $active1 = $this->ReadPropertyBoolean('active1');
+				   if ($active1 == true) {
+					 $device1 = $this->ReadPropertyString('device1');
+					 $macaddress1 = $this->ReadPropertyString('macaddress1');
+					 $user1 = $this->ReadPropertyString('user1');
+					 
+					 if ($device1 != '' && $user1 != '' && $macaddress1 != '') {		   
+					  $ping1 = Sys_Ping("$device1",10); 
+					  if ($ping1 == true) 
+					   { 
+						$host1 = gethostbyaddr($device1); 
+						$output1 = shell_exec("arp -a $device1");
+						  if(strpos($output1,$macaddress1)!==false) {
+						  $this->SetValue('user1Active', true);
+						  }
+					   }
+					   else 
+					   { 
+						 $this->SetValue('user1Active', false);
+					   }
+					}
+				  }
+				  
+				  //Function für Device 2:
+				   $active2 = $this->ReadPropertyBoolean('active2');
+				   if ($active2 == true) {
+					 $device2 = $this->ReadPropertyString('device2');
+					 $macaddress2 = $this->ReadPropertyString('macaddress2');
+					 $user2 = $this->ReadPropertyString('user2');
+					 
+					 if ($device2 != '' && $user2 != '' && $macaddress2 != '') {		   
+					  $ping2 = Sys_Ping("$device2",10); 
+					  if ($ping2 == true) 
+					   { 
+						$host2 = gethostbyaddr($device2); 
+						$output2 = shell_exec("arp -a $device2");
+						  if(strpos($output2,$macaddress2)!==false) {
+						  $this->SetValue('user2Active', true);
+						  }
+					   }
+					   else 
+					   { 
+						 $this->SetValue('user2Active', false);
+					   }
+					}
+				  }
+				  
+				  //Function für Device 3:
+				   $active3 = $this->ReadPropertyBoolean('active3');
+				   if ($active3 == true) {
+					 $device3 = $this->ReadPropertyString('device3');
+					 $macaddress3 = $this->ReadPropertyString('macaddress3');
+					 $user3 = $this->ReadPropertyString('user3');
+					 
+					 if ($device3 != '' && $user3 != '' && $macaddress3 != '') {		   
+					  $ping3 = Sys_Ping("$device3",10); 
+					  if ($ping3 == true) 
+					   { 
+						$host3 = gethostbyaddr($device3); 
+						$output3 = shell_exec("arp -a $device3");
+						  if(strpos($output3,$macaddress3)!==false) {
+						  $this->SetValue('user3Active', true);
+						  }
+					   }
+					   else 
+					   { 
+						 $this->SetValue('user3Active', false);
+					   }
+					}
+				  }
+				  
+				  //Function für Device 4:
+				   $active4 = $this->ReadPropertyBoolean('active4');
+				   if ($active4 == true) {
+					 $device4 = $this->ReadPropertyString('device4');
+					 $macaddress4 = $this->ReadPropertyString('macaddress4');
+					 $user4 = $this->ReadPropertyString('user4');
+					 
+					 if ($device4 != '' && $user4 != '' && $macaddress4 != '') {		   
+					  $ping4 = Sys_Ping("$device4",10); 
+					  if ($ping4 == true) 
+					   { 
+						$host4 = gethostbyaddr($device4); 
+						$output4 = shell_exec("arp -a $device4");
+						  if(strpos($output4,$macaddress4)!==false) {
+						  $this->SetValue('user4Active', true);
+						  }
+					   }
+					   else 
+					   { 
+						 $this->SetValue('user4Active', false);
+					   }
+					}
+				  }
+
+		    }
 		}
 		 
 				
