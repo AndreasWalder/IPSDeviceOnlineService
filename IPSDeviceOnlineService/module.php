@@ -124,6 +124,8 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 		
+		if ($ok1 == true)
+	  {	
 	    	
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
@@ -155,6 +157,7 @@ class IPSDeviceOnlineService extends IPSModule
 		else {
 			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
+	  }
 	
 	}
 	     public function Debug() {
