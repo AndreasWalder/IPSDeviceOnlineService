@@ -120,13 +120,13 @@ class IPSDeviceOnlineService extends IPSModule
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
 		// Instanz Status setzen (aktiv -> inaktiv)
-		if ($device1 != '' && $user1 != '' && $macaddress1 != '') {
+		if ($device1 != '' && $user1 != '' && ($macaddress1 != '' ||	$hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
 			   $this->SetSummary("OK");
 			   
                $ok1 = true;		
                // setzt Instanz Status auf aktiv			   
-               $this->SetStatus(102);		   
+               $this->SetStatus(102);	   
         } 
 		else {
 			 $this->SetSummary("Fehler");
