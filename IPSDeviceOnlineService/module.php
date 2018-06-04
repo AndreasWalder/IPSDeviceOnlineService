@@ -303,7 +303,7 @@ class IPSDeviceOnlineService extends IPSModule
 						  }
 						 }
 						 if ($hostname1 != '') {
-						  if(strpos($output1,$hostname1)!==false) {
+						  if(strpos($host1,$hostname1)!==false) {
 						  $this->SetValue('user1Active', true);
 						  }
 						 }
