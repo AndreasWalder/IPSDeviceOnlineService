@@ -178,6 +178,7 @@ class IPSDeviceOnlineService extends IPSModule
 				
 				$lines=explode("\n", $output);
                 #look for the output line describing our IP address
+				$macAddr="";
                 foreach($lines as $line)
                  {
                    $cols=preg_split('/\s+/', trim($line));
@@ -190,7 +191,7 @@ class IPSDeviceOnlineService extends IPSModule
 				 
 				echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
 				
-				if ($macAddr) {
+				if ($macAddr != "") {
 					echo "Mac: $macAddr \n";
 				}
 				else{
