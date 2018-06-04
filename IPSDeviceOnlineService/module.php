@@ -286,22 +286,32 @@ class IPSDeviceOnlineService extends IPSModule
 					 $device1 = $this->ReadPropertyString('device1');
 					 $macaddress1 = $this->ReadPropertyString('macaddress1');
 					 $user1 = $this->ReadPropertyString('user1');
+					 $hostname1 = $this->ReadPropertyString('hostname1');
 					 
-					 if ($device1 != '' && $user1 != '' && $macaddress1 != '') {		   
+					 if ($device1 != '' && $user1 != '' && ) {
+                      if ($macaddress1 != '' ||	$hostname1 != '') {					 
 					  $ping1 = Sys_Ping("$device1",10); 
 					  if ($ping1 == true) 
 					   { 
 						$host1 = gethostbyaddr($device1); 
 						$output1 = shell_exec("arp -a $device1");
+						 if ($macaddress1 != '') {
 						  if(strpos($output1,$macaddress1)!==false) {
 						  $this->SetValue('user1Active', true);
 						  }
+						 }
+						 if ($hostname1 != '') {
+						  if(strpos($output1,$hostname1)!==false) {
+						  $this->SetValue('user1Active', true);
+						  }
+						 }
 					   }
 					   else 
 					   { 
 						 $this->SetValue('user1Active', false);
 					   }
 					}
+				   }
 				  }
 				  
 				  //Function für Device 2:
@@ -310,6 +320,7 @@ class IPSDeviceOnlineService extends IPSModule
 					 $device2 = $this->ReadPropertyString('device2');
 					 $macaddress2 = $this->ReadPropertyString('macaddress2');
 					 $user2 = $this->ReadPropertyString('user2');
+					 $hostname2 = $this->ReadPropertyString('hostname2');
 					 
 					 if ($device2 != '' && $user2 != '' && $macaddress2 != '') {		   
 					  $ping2 = Sys_Ping("$device2",10); 
@@ -334,6 +345,7 @@ class IPSDeviceOnlineService extends IPSModule
 					 $device3 = $this->ReadPropertyString('device3');
 					 $macaddress3 = $this->ReadPropertyString('macaddress3');
 					 $user3 = $this->ReadPropertyString('user3');
+					 $hostname3 = $this->ReadPropertyString('hostname3');
 					 
 					 if ($device3 != '' && $user3 != '' && $macaddress3 != '') {		   
 					  $ping3 = Sys_Ping("$device3",10); 
@@ -358,6 +370,7 @@ class IPSDeviceOnlineService extends IPSModule
 					 $device4 = $this->ReadPropertyString('device4');
 					 $macaddress4 = $this->ReadPropertyString('macaddress4');
 					 $user4 = $this->ReadPropertyString('user4');
+					 $hostname4 = $this->ReadPropertyString('hostname4');
 					 
 					 if ($device4 != '' && $user4 != '' && $macaddress4 != '') {		   
 					  $ping4 = Sys_Ping("$device4",10); 
