@@ -189,7 +189,16 @@ class IPSDeviceOnlineService extends IPSModule
                  }
 				 
 				echo "IP: $DebugDeviceAddress -- Hostname: $host \n";
-				echo "Mac: $macAddr \n";
+				
+				if ($macAddr) {
+					echo "Mac: $macAddr \n";
+				}
+				else{
+					echo "keine MacAdresse \n";
+				}
+				
+				
+				
 				echo "\n";
 				echo "Bitte Instanz (Modul) kurz schließen und wieder öffnen, dann wird \n";
 				echo "die MAC-Adresse im Feld <Angezeigte Adresse> angezeigt ;-)\n";
