@@ -281,18 +281,20 @@ class IPSDeviceOnlineService extends IPSModule
 		  for ($x = 0; $x <= 5; $x++) {
 
 				   //Function für Device 1:
-				/*   $active1 = $this->ReadPropertyBoolean('active1');
+				   $active1 = $this->ReadPropertyBoolean('active1');
 				   if ($active1 == true) {
+					   
 					 $device1 = $this->ReadPropertyString('device1');
 					 $macaddress1 = $this->ReadPropertyString('macaddress1');
 					 $user1 = $this->ReadPropertyString('user1');
 					 $hostname1 = $this->ReadPropertyString('hostname1');
 					 
-					 if ($device1 != '' && $user1 != '' && ) {
-                      if ($macaddress1 != '' ||	$hostname1 != '') {					 
+					 if ($device1 != '' && $user1 != '') {
+                      if ($macaddress1 != '' ||	$hostname1 != '') {				 
 					  $ping1 = Sys_Ping("$device1",10); 
 					  if ($ping1 == true) 
 					   { 
+			   
 						$host1 = gethostbyaddr($device1); 
 						$output1 = shell_exec("arp -a $device1");
 						 if ($macaddress1 != '') {
@@ -305,6 +307,7 @@ class IPSDeviceOnlineService extends IPSModule
 						  $this->SetValue('user1Active', true);
 						  }
 						 }
+						 
 					   }
 					   else 
 					   { 
@@ -313,7 +316,7 @@ class IPSDeviceOnlineService extends IPSModule
 					}
 				   }
 				  }
-				  */
+				  
 				  
 				  //Function für Device 2:
 				   $active2 = $this->ReadPropertyBoolean('active2');
