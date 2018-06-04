@@ -31,23 +31,28 @@ class IPSDeviceOnlineService extends IPSModule
         $this->RegisterPropertyString('device1', '');
         $this->RegisterPropertyString('user1', '');
         $this->RegisterPropertyString('macaddress1', '');
+		$this->RegisterPropertyString('hostname1', '');
         $this->RegisterPropertyBoolean('active1', 'false');
 		$this->RegisterPropertyString('device2', '');
         $this->RegisterPropertyString('user2', '');
         $this->RegisterPropertyString('macaddress2', '');
+		$this->RegisterPropertyString('hostname2', '');
         $this->RegisterPropertyBoolean('active2', 'false');
 		$this->RegisterPropertyString('device3', '');
         $this->RegisterPropertyString('user3', '');
         $this->RegisterPropertyString('macaddress3', '');
+		$this->RegisterPropertyString('hostname3', '');
         $this->RegisterPropertyBoolean('active3', 'false');
 		$this->RegisterPropertyString('device4', '');
         $this->RegisterPropertyString('user4', '');
         $this->RegisterPropertyString('macaddress4', '');
+		$this->RegisterPropertyString('hostname4', '');
         $this->RegisterPropertyBoolean('active4', 'false');
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
 		$this->RegisterPropertyInteger("UpdateInterval", 5);
 		$this->RegisterPropertyString("DebugMacAddress", '');
+		$this->RegisterPropertyString("DebugHostname", '');
 		
 		//Timer erstellen und zum durchreichen der Schaltflächen im Modul 
 		$this->RegisterTimer("Update", $this->ReadPropertyInteger("UpdateInterval"), 'IPSDOS_UpdateData($_IPS[\'TARGET\']);');
@@ -90,21 +95,26 @@ class IPSDeviceOnlineService extends IPSModule
         $device1 = $this->ReadPropertyString('device1');
         $user1 = $this->ReadPropertyString('user1');
         $macaddress1 = $this->ReadPropertyString('macaddress1');
+		$hostname1 = $this->ReadPropertyString('hostname1');
         $active1 = $this->ReadPropertyBoolean('active1');
 		$device2 = $this->ReadPropertyString('device2');
         $user2 = $this->ReadPropertyString('user2');
         $macaddress2 = $this->ReadPropertyString('macaddress2');
+		$hostname2 = $this->ReadPropertyString('hostname2');
         $active2 = $this->ReadPropertyBoolean('active2');
 		$device3 = $this->ReadPropertyString('device3');
         $user3 = $this->ReadPropertyString('user3');
         $macaddress3 = $this->ReadPropertyString('macaddress3');
+		$hostname3 = $this->ReadPropertyString('hostname3');
         $active3 = $this->ReadPropertyBoolean('active3');
 		$device4 = $this->ReadPropertyString('device4');
         $user4 = $this->ReadPropertyString('user4');
         $macaddress4 = $this->ReadPropertyString('macaddress4');
+		$hostname4 = $this->ReadPropertyString('hostname4');
         $active4 = $this->ReadPropertyBoolean('active4');
 		
 		$DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
+		$DebugHostname = $this->ReadPropertyString('DebugHostname');
 		
 		//Timer Interval setzen für Update Function
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
@@ -163,6 +173,7 @@ class IPSDeviceOnlineService extends IPSModule
 	     public function Debug() {
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
+			 $DebugHostname = $this->ReadPropertyString('DebugHostname');
 			 
 			
 			 if ($DebugDeviceAddress == '') {
@@ -174,6 +185,7 @@ class IPSDeviceOnlineService extends IPSModule
              if ($ping == true) 
              { 
                 $host = gethostbyaddr($DebugDeviceAddress);
+				$this->ShowHostname($host);
                 $output = shell_exec("arp -a $DebugDeviceAddress");
 				
 				$lines=explode("\n", $output);
@@ -195,7 +207,7 @@ class IPSDeviceOnlineService extends IPSModule
 					echo "Mac: $macAddr \n";
 				}
 				else{
-					echo "keine MacAdresse \n";
+					echo "keine MacAdresse bitte Hostname verwenden! \n";
 				}
 				
 				
@@ -249,6 +261,15 @@ class IPSDeviceOnlineService extends IPSModule
 		           $InstanzId = $this->GetInstanzId();
                    If ($InstanzId) {
                    IPS_SetProperty($InstanzId, "DebugMacAddress", $setPropertyNameMac); //neuen Wert setzen
+				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
+                   //echo $InstanzId;
+				   }			
+		}
+		
+		private function ShowHostname($setPropertyHostname) {
+		           $InstanzId = $this->GetInstanzId();
+                   If ($InstanzId) {
+                   IPS_SetProperty($InstanzId, "DebugHostname", $setPropertyHostname); //neuen Wert setzen
 				   IPS_ApplyChanges($InstanzId); //neuen Wert übernehmen
                    //echo $InstanzId;
 				   }			
