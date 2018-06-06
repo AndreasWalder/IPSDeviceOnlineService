@@ -32,22 +32,30 @@ class IPSDeviceOnlineService extends IPSModule
         $this->RegisterPropertyString('user1', '');
         $this->RegisterPropertyString('macaddress1', '');
 		$this->RegisterPropertyString('hostname1', '');
+		$this->RegisterPropertyInteger('dhcpType1', 0);	
         $this->RegisterPropertyBoolean('active1', 'false');
+		
 		$this->RegisterPropertyString('device2', '');
         $this->RegisterPropertyString('user2', '');
         $this->RegisterPropertyString('macaddress2', '');
 		$this->RegisterPropertyString('hostname2', '');
+		$this->RegisterPropertyInteger('dhcpType2', 0);	
         $this->RegisterPropertyBoolean('active2', 'false');
+		
 		$this->RegisterPropertyString('device3', '');
         $this->RegisterPropertyString('user3', '');
         $this->RegisterPropertyString('macaddress3', '');
 		$this->RegisterPropertyString('hostname3', '');
+		$this->RegisterPropertyInteger('dhcpType3', 0);	
         $this->RegisterPropertyBoolean('active3', 'false');
+		
 		$this->RegisterPropertyString('device4', '');
         $this->RegisterPropertyString('user4', '');
         $this->RegisterPropertyString('macaddress4', '');
 		$this->RegisterPropertyString('hostname4', '');
+		$this->RegisterPropertyInteger('dhcpType4', 0);	
         $this->RegisterPropertyBoolean('active4', 'false');
+		
 		$this->RegisterPropertyString('DebugDeviceAddress', '');
 		
 		$this->RegisterPropertyInteger("UpdateInterval", 5);
@@ -119,10 +127,12 @@ class IPSDeviceOnlineService extends IPSModule
 		//Timer Interval setzen für Update Function
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
+		$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
+		if ($dhcpType1 == 1) {
 		// Instanz Status setzen (aktiv -> inaktiv)
 		if ($device1 != '' && $user1 != '' && ($macaddress1 != '' ||	$hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
-			   $this->SetSummary("OK");
+			   $this->SetSummary("Status statisch - OK");
 			   
                $ok1 = true;		
                // setzt Instanz Status auf aktiv			   
@@ -133,7 +143,23 @@ class IPSDeviceOnlineService extends IPSModule
 			 $ok1 = false;		 
              $this->SetStatus(104);
         }
-		
+	  }
+	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
+		  if ($user1 != '' && $hostname1 != '')) {			
+			   // Zeigt Info neben der Instanz
+			   $this->SetSummary("Status DHCP - OK");
+			   
+               $ok1 = true;		
+               // setzt Instanz Status auf aktiv			   
+               $this->SetStatus(102);	   
+        } 
+		else {
+			 $this->SetSummary("Fehler");
+			 $ok1 = false;		 
+             $this->SetStatus(104);
+        }
+	  }
+	  
 		if ($ok1 == true)
 	  {	
 	    	
@@ -288,7 +314,9 @@ class IPSDeviceOnlineService extends IPSModule
 					 $macaddress1 = $this->ReadPropertyString('macaddress1');
 					 $user1 = $this->ReadPropertyString('user1');
 					 $hostname1 = $this->ReadPropertyString('hostname1');
+					 $dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
 					 
+					if ($dhcpType1 == 1) {
 					 if ($device1 != '' && $user1 != '') {
                       if ($macaddress1 != '' ||	$hostname1 != '') {				 
 					  $ping1 = Sys_Ping("$device1",10); 
@@ -316,31 +344,56 @@ class IPSDeviceOnlineService extends IPSModule
 					}
 				   }
 				  }
-				  
+				  if ($dhcpType1 == 0) {
+					if ($hostname1 != '' && $user1 != '') {
+					  $ping1 = Sys_Ping("$hostname1",10); 
+					  if ($ping1 == true) 
+					   { 
+						  $this->SetValue('user1Active', true);	 
+					   }
+					   else 
+					   { 
+						 $this->SetValue('user1Active', false);
+					   }
+					}						
+				  }
+				 }
 				  
 				  //Function für Device 2:
 				   $active2 = $this->ReadPropertyBoolean('active2');
 				   if ($active2 == true) {
+					   
 					 $device2 = $this->ReadPropertyString('device2');
 					 $macaddress2 = $this->ReadPropertyString('macaddress2');
 					 $user2 = $this->ReadPropertyString('user2');
 					 $hostname2 = $this->ReadPropertyString('hostname2');
 					 
-					 if ($device2 != '' && $user2 != '' && $macaddress2 != '') {		   
+					 if ($device2 != '' && $user2 != '') {
+                      if ($macaddress2 != '' ||	$hostname2 != '') {				 
 					  $ping2 = Sys_Ping("$device2",10); 
 					  if ($ping2 == true) 
 					   { 
+			   
 						$host2 = gethostbyaddr($device2); 
 						$output2 = shell_exec("arp -a $device2");
+						 if ($macaddress2 != '') {
 						  if(strpos($output2,$macaddress2)!==false) {
 						  $this->SetValue('user2Active', true);
 						  }
+						 }
+						 if ($hostname2 != '') {
+						  if(strpos($host2,$hostname2)!==false) {
+						  $this->SetValue('user2Active', true);
+						  }
+						 }
+						 
 					   }
 					   else 
 					   { 
 						 $this->SetValue('user2Active', false);
 					   }
 					}
+				   }
 				  }
 				  
 				  //Function für Device 3:
