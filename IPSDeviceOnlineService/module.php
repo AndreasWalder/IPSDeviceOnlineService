@@ -146,6 +146,9 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 	  }
+	  
+	  
+	  
 	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
 		  if ($user1 != '' && $hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
@@ -196,7 +199,7 @@ class IPSDeviceOnlineService extends IPSModule
 			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
 	  }
-	
+	}
 	
 	     public function Debug() {
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
