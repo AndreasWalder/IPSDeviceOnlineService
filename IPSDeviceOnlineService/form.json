@@ -14,7 +14,7 @@
                 { "label": "DHCP", "value": 0 },
                 { "label": "statisch", "value": 1 },
                 ]
-                },
+                }
 				
 				{ "type": "CheckBox", "name": "active1", "caption": "Active1" },
 				
@@ -28,7 +28,7 @@
                 { "label": "DHCP", "value": 0 },
                 { "label": "statisch", "value": 1 },
                 ]
-                },
+                }
 				
 				{ "type": "CheckBox", "name": "active2", "caption": "Active2" },
 				
@@ -42,7 +42,7 @@
                 { "label": "DHCP", "value": 0 },
                 { "label": "statisch", "value": 1 },
                 ]
-                },
+                }
 				
 				{ "type": "CheckBox", "name": "active3", "caption": "Active3" },
 				
@@ -56,7 +56,7 @@
                 { "label": "DHCP", "value": 0 },
                 { "label": "statisch", "value": 1 },
                 ]
-                },
+                }
 				
 				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
 				
