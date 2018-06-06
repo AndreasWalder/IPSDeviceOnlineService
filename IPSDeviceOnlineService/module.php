@@ -145,9 +145,27 @@ class IPSDeviceOnlineService extends IPSModule
         }
 	  }
 	  
+	  
+	  /*
+	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
+		  if ($user1 != '' && $hostname1 != '')) {			
+			   // Zeigt Info neben der Instanz
+			   $this->SetSummary("Status DHCP - OK");
+			   
+               $ok1 = true;		
+               // setzt Instanz Status auf aktiv			   
+               $this->SetStatus(102);	   
+        } 
+		else {
+			 $this->SetSummary("Fehler");
+			 $ok1 = false;		 
+             $this->SetStatus(104);
+        }
+	   }
+	  
 		if ($ok1 == true)
-	  {
-	   
+	  {	
+	   */
 	   
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
