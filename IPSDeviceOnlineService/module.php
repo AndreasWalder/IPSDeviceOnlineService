@@ -362,7 +362,6 @@ class IPSDeviceOnlineService extends IPSModule
 				  }
 				 }
 				 
-*/
 				 
 				  //Function für Device 2:
 				   $active2 = $this->ReadPropertyBoolean('active2');
@@ -400,7 +399,9 @@ class IPSDeviceOnlineService extends IPSModule
 					}
 				   }
 				  }
-				  
+				
+*/
+				
 				  //Function für Device 3:
 				   $active3 = $this->ReadPropertyBoolean('active3');
 				   if ($active3 == true) {
