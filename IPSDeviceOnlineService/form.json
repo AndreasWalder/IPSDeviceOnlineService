@@ -12,9 +12,10 @@
 				{ "type": "Select", "name": "dhcpType1", "caption": "DHCP-Einstellung",
 				"options": [
                 { "label": "DHCP", "value": 0 },
-                { "label": "statisch", "value": 1 },
+                { "label": "statisch", "value": 1 }
                 ]
-                }
+                },
+				
 				
 				{ "type": "CheckBox", "name": "active1", "caption": "Active1" },
 				
@@ -26,9 +27,9 @@
 				{ "type": "Select", "name": "dhcpType2", "caption": "DHCP-Einstellung",
 				"options": [
                 { "label": "DHCP", "value": 0 },
-                { "label": "statisch", "value": 1 },
+                { "label": "statisch", "value": 1 }
                 ]
-                }
+                },
 				
 				{ "type": "CheckBox", "name": "active2", "caption": "Active2" },
 				
@@ -40,9 +41,9 @@
 				{ "type": "Select", "name": "dhcpType3", "caption": "DHCP-Einstellung",
 				"options": [
                 { "label": "DHCP", "value": 0 },
-                { "label": "statisch", "value": 1 },
+                { "label": "statisch", "value": 1 }
                 ]
-                }
+                },
 				
 				{ "type": "CheckBox", "name": "active3", "caption": "Active3" },
 				
@@ -54,9 +55,9 @@
 				{ "type": "Select", "name": "dhcpType4", "caption": "DHCP-Einstellung",
 				"options": [
                 { "label": "DHCP", "value": 0 },
-                { "label": "statisch", "value": 1 },
+                { "label": "statisch", "value": 1 }
                 ]
-                }
+                },
 				
 				{ "type": "CheckBox", "name": "active4", "caption": "Active4" },
 				
