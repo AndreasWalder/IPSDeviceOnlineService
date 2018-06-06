@@ -20,7 +20,7 @@ if (!defined('IPS_STRING')) {
 
 
 class IPSDeviceOnlineService extends IPSModule
-{
+ {
 	// Wird beim Setup vom Modul aufgerufen (ganz am Anfang)
     public function Create()
     {
@@ -197,7 +197,7 @@ class IPSDeviceOnlineService extends IPSModule
         }
 	  }
 	
-	}
+	
 	     public function Debug() {
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
 			 $DebugDeviceAddress = $this->ReadPropertyString('DebugDeviceAddress');
@@ -454,6 +454,6 @@ class IPSDeviceOnlineService extends IPSModule
 
 		    }
 		}
-		 
+  
 				
 }
