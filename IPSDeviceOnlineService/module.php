@@ -163,7 +163,7 @@ class IPSDeviceOnlineService extends IPSModule
 			 $ok1 = false;		 
              $this->SetStatus(104);
         }
-	  }
+	   }
 	  
 		if ($ok1 == true)
 	  {	
@@ -199,7 +199,8 @@ class IPSDeviceOnlineService extends IPSModule
 			$this->MaintainVariable("user4Active", $user4, IPS_INTEGER, "IPSDOS.Status", 0, false); 
         }
 	  }
-	}
+	 }
+	
 	
 	     public function Debug() {
 			 // Zum herausfinden der Mac Adresse für die Geräte Zuordnung
