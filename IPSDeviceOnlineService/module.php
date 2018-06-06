@@ -127,7 +127,7 @@ class IPSDeviceOnlineService extends IPSModule
 		//Timer Interval setzen für Update Function
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-		
+		$ok1 = false;	
 		$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //1-DHCP, 0-statisch
 	   if ($dhcpType1 == 0) {		
 		// Instanz Status setzen (aktiv -> inaktiv)
@@ -146,7 +146,7 @@ class IPSDeviceOnlineService extends IPSModule
 	  }
 	  
 	  
-	  
+	  /*
 	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
 		  if ($user1 != '' && $hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
@@ -162,7 +162,7 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 	   }
-	   
+	   */
 	  
 		if ($ok1 == true)
 	  {	
