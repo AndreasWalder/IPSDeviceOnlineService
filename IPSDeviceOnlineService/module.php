@@ -127,8 +127,10 @@ class IPSDeviceOnlineService extends IPSModule
 		//Timer Interval setzen für Update Function
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
-		$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
-		if ($dhcpType1 == 1) {
+		
+		//$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
+		//if ($dhcpType1 == 1) {
+		
 		// Instanz Status setzen (aktiv -> inaktiv)
 		if ($device1 != '' && $user1 != '' && ($macaddress1 != '' ||	$hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
@@ -143,7 +145,7 @@ class IPSDeviceOnlineService extends IPSModule
 			 $ok1 = false;		 
              $this->SetStatus(104);
         }
-	  }
+	  /*}
 	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
 		  if ($user1 != '' && $hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
@@ -162,7 +164,7 @@ class IPSDeviceOnlineService extends IPSModule
 	  
 		if ($ok1 == true)
 	  {	
-	    	
+	 */   	
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
 		$this->LoggingEnable($user1); //Logging für diese Variable einschalten
