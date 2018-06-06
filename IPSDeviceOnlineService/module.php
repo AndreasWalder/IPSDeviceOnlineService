@@ -144,8 +144,9 @@ class IPSDeviceOnlineService extends IPSModule
              $this->SetStatus(104);
         }
 	  }
-	  else {
-		if ($user1 != '' && $hostname1 != '') {		
+	  
+	  if ($dhcpType1 == 0) {     //0-DHCP, 1-statisch
+		  if ($user1 != '' && $hostname1 != '') {		
 			   // Zeigt Info neben der Instanz
 			   $this->SetSummary("Status DHCP - OK");			   
                $ok1 = true;		
@@ -156,9 +157,8 @@ class IPSDeviceOnlineService extends IPSModule
 			 $this->SetSummary("Fehler");
 			 $ok1 = false;		 
              $this->SetStatus(104);
-        }  	  
+        }
 	  }
-	  
 	  
 		if ($ok1 == true)
 	  {
