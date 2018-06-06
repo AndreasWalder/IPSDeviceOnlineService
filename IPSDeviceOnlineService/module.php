@@ -145,10 +145,6 @@ class IPSDeviceOnlineService extends IPSModule
         }
 	  }
 	  
-	  if ($dhcpType1 == 0) {     //0-DHCP, 1-statisch
-		  
-	  }
-	  
 		if ($ok1 == true)
 	  {
 	   
