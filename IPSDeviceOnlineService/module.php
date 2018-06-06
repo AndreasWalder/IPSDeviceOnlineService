@@ -134,8 +134,7 @@ class IPSDeviceOnlineService extends IPSModule
 		// Instanz Status setzen (aktiv -> inaktiv)
 		if ($device1 != '' && $user1 != '' && ($macaddress1 != '' ||	$hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
-			   $this->SetSummary("Status statisch - OK");
-			   
+			   $this->SetSummary("Status statisch - OK");			   
                $ok1 = true;		
                // setzt Instanz Status auf aktiv			   
                $this->SetStatus(102);	   
@@ -148,7 +147,7 @@ class IPSDeviceOnlineService extends IPSModule
 	  }
 	  
 	  
-	  
+	  /*
 	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
 		  if ($user1 != '' && $hostname1 != '')) {			
 			   // Zeigt Info neben der Instanz
@@ -167,7 +166,8 @@ class IPSDeviceOnlineService extends IPSModule
 	  
 		if ($ok1 == true)
 	  {	
-	    	
+	   */
+	   
 		// Variable anlegen im Ipsymcon vom Typ Integer und vom Profil IPSDOS.Status wenn $ok1 true (Module IO) ist
 		$this->MaintainVariable("user1Active", $user1, IPS_INTEGER, "IPSDOS.Status", 0, $ok1);
 		$this->LoggingEnable($user1); //Logging für diese Variable einschalten
