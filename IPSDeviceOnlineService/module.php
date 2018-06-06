@@ -128,7 +128,7 @@ class IPSDeviceOnlineService extends IPSModule
 		$this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateInterval")*1000*60);
 
 		
-		//$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
+		$dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
 		if ($dhcpType1 == 1) {
 		
 		// Instanz Status setzen (aktiv -> inaktiv)
