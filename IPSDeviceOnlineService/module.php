@@ -146,7 +146,7 @@ class IPSDeviceOnlineService extends IPSModule
 	  }
 	  
 	  
-	  
+	  $dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //1-DHCP, 0-statisch
 	  if ($dhcpType1 == 0) { //0-DHCP, 1-statisch
 		  if ($user1 != '' && $hostname1 != '') {			
 			   // Zeigt Info neben der Instanz
