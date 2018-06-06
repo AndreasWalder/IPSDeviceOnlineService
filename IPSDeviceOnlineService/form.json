@@ -10,8 +10,8 @@
 				{ "type": "ValidationTextBox", "name": "hostname1", "caption": "Hostname1" },				
 				{ "type": "Select", "name": "dhcpType1", "caption": "DHCP-Einstellung",
 				"options": [
-                { "label": "DHCP", "value": 0 },
-                { "label": "statisch", "value": 1 }
+                { "label": "statisch", "value": 0 },
+                { "label": "DHCP", "value": 1 }
                 ]
                 },		
 				{ "type": "CheckBox", "name": "active1", "caption": "Active1" },		
