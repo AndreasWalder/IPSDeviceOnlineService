@@ -307,7 +307,7 @@ class IPSDeviceOnlineService extends IPSModule
          public function UpdateData() {
 			 
 		  for ($x = 0; $x <= 5; $x++) {
-
+/*
 		  
 				   //Function für Device 1:
 				   $active1 = $this->ReadPropertyBoolean('active1');
