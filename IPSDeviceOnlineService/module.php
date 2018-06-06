@@ -319,9 +319,9 @@ class IPSDeviceOnlineService extends IPSModule
 					 $macaddress1 = $this->ReadPropertyString('macaddress1');
 					 $user1 = $this->ReadPropertyString('user1');
 					 $hostname1 = $this->ReadPropertyString('hostname1');
-					 $dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //0-DHCP, 1-statisch
+					 $dhcpType1 = $this->ReadPropertyInteger('dhcpType1'); //1-DHCP, 0-statisch
 					 
-					if ($dhcpType1 == 1) {
+					if ($dhcpType1 == 0) {
 					 if ($device1 != '' && $user1 != '') {
                       if ($macaddress1 != '' ||	$hostname1 != '') {				 
 					  $ping1 = Sys_Ping("$device1",10); 
@@ -349,7 +349,7 @@ class IPSDeviceOnlineService extends IPSModule
 					}
 				   }
 				  }
-				  if ($dhcpType1 == 0) {
+				  else {
 					if ($hostname1 != '' && $user1 != '') {
 					  $ping1 = Sys_Ping("$hostname1",10); 
 					  if ($ping1 == true) 
