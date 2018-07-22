@@ -309,7 +309,7 @@ class IPSDeviceOnlineService extends IPSModule
          public function UpdateData() {
 			 
 		  for ($x = 0; $x <= 5; $x++) {
-
+                   set_time_limit(180);
 		  
 				   //Function für Device 1:
 				   $active1 = $this->ReadPropertyBoolean('active1');
