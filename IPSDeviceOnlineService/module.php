@@ -385,7 +385,7 @@ class IPSDeviceOnlineService extends IPSModule
 						$host2 = gethostbyaddr($device2); 
 						$output2 = shell_exec("arp -a $device2");
 						 if ($macaddress2 != '') {
-						  if(strpos($output2,$macaddress1)!==false) {
+						  if(strpos($output2,$macaddress2)!==false) {
 						  $this->SetValue('user2Active', true);
 						  }
 						 }
