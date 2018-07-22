@@ -1,5 +1,5 @@
 <?php
-
+set_time_limit(180);
 // Constants will be defined with IP-Symcon 5.0 and newer
 if (!defined('KR_READY')) {
     define('KR_READY', 10103);
